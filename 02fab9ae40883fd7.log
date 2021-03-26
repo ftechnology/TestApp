@@ -1,0 +1,1827 @@
+Agent version:	1.20.0
+Hostname:	prd-latest-use1c-210326044540-dednuthvvfa2aktuyxajen
+Start time:	2021-03-26T05:02:53Z
+$ docker "run" "-v" "/var/run/docker.sock:/var/run/docker.sock" "-v" "/bitrise:/bitrise" "-v" "/tmp/bitrise-agent550026456:/.bitrise-config" "-e" "BITRISE_BUILD_TRIGGER_TIMESTAMP=1616734972" "-e" "BITRISE_BUILD_NUMBER=4" "-e" "BITRISE_BUILD_URL=https://app.bitrise.io/build/02fab9ae40883fd7" "-e" "BITRISE_APP_URL=https://app.bitrise.io/app/ee5cd9b3b7c66603" "-e" "BITRISE_APP_SLUG=ee5cd9b3b7c66603" "-e" "BITRISE_APP_TITLE=TestApp" "-e" "GIT_REPOSITORY_URL=git@github.com:ftechnology/TestApp.git" "-e" "BITRISEIO_GIT_REPOSITORY_OWNER=ftechnology" "-e" "BITRISE_BUILD_SLUG=02fab9ae40883fd7" "-e" "BITRISE_IO=true" "-e" "BITRISEIO_GIT_REPOSITORY_SLUG=TestApp" "-e" "BITRISE_GIT_BRANCH=main" "-e" "BITRISEIO_STACK_ID=linux-docker-android" "--privileged" "--network=host" "--name=bitrise-main-container" "bitriseio/android-ndk:pinned" "bitrise" "run" "--config" "/.bitrise-config/bitrise.yml" "--inventory" "/.bitrise-config/bitrise.secrets.yml" "--json-params-base64" "eyJ3b3JrZmxvdyI6InByaW1hcnkifQ=="
+
+  ██████╗ ██╗████████╗██████╗ ██╗███████╗███████╗
+  ██╔══██╗██║╚══██╔══╝██╔══██╗██║██╔════╝██╔════╝
+  ██████╔╝██║   ██║   ██████╔╝██║███████╗█████╗
+  ██╔══██╗██║   ██║   ██╔══██╗██║╚════██║██╔══╝
+  ██████╔╝██║   ██║   ██║  ██║██║███████║███████╗
+  ╚═════╝ ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝╚══════╝╚══════╝
+
+[32;1m  version: 1.44.0[0m
+
+[36mINFO[0m[05:02:53] [33;1mbitrise runs in Secret Filtering mode[0m 
+[36mINFO[0m[05:02:53] [33;1mbitrise runs in CI mode[0m           
+[36mINFO[0m[05:02:53] Running workflow: [32;1mprimary[0m         
+
+[34;1mSwitching to workflow:[0m primary
+
+[36mINFO[0m[05:02:54] Step uses latest version -- Updating StepLib ... 
++------------------------------------------------------------------------------+
+| (0) activate-ssh-key@4                                                       |
++------------------------------------------------------------------------------+
+| id: activate-ssh-key                                                         |
+| version: 4.0.5                                                               |
+| collection: https://github.com/bitrise-io/bitrise-steplib.git                |
+| toolkit: go                                                                  |
+| time: 2021-03-26T05:02:57Z                                                   |
++------------------------------------------------------------------------------+
+|                                                                              |
+[36mINFO[0m[05:02:57] Start installing (expect) with apt-get       
+[36mINFO[0m[05:02:57]  * [32;1m[OK][0m Step dependency (expect) installed, available. 
+[36mINFO[0m[05:02:57] Start installing (git) with apt-get          
+[36mINFO[0m[05:02:57]  * [32;1m[OK][0m Step dependency (git) installed, available. 
+[34;1mConfig:[0m
+- SSHRsaPrivateKey: *****
+- SSHKeySavePath: /root/.ssh/bitrise_step_activate_ssh_key
+- IsRemoveOtherIdentities: true
+- Verbose: false
+
+$ ssh-add "-l"
+Could not open a connection to your authentication agent.
+ssh_agent_check_result: 2
+ssh-agent not started
+starting a new ssh-agent and exporting connection information with envman
+$ ssh-agent
+Expose SSH_AUTH_SOCK for the new ssh-agent, with envman
+$ bash "-c" "/tmp/spawn209542658/tmp_spawn.sh"
+spawn ssh-add /root/.ssh/bitrise_step_activate_ssh_key
+Identity added: /root/.ssh/bitrise_step_activate_ssh_key (/root/.ssh/bitrise_step_activate_ssh_key)
+
+[32;1mSuccess[0m
+The SSH key was saved to /root/.ssh/bitrise_step_activate_ssh_key
+and was successfully added to ssh-agent.
+|                                                                              |
++---+---------------------------------------------------------------+----------+
+| [32;1m✓[0m | [32;1mactivate-ssh-key@4[0m                                            | 5.66 sec |
++---+---------------------------------------------------------------+----------+
+
+                                          ▼
+
++------------------------------------------------------------------------------+
+| (1) git-clone@4                                                              |
++------------------------------------------------------------------------------+
+| id: git-clone                                                                |
+| version: 4.3.0                                                               |
+| collection: https://github.com/bitrise-io/bitrise-steplib.git                |
+| toolkit: go                                                                  |
+| time: 2021-03-26T05:03:00Z                                                   |
++------------------------------------------------------------------------------+
+|                                                                              |
+[34;1mConfig:
+[0m- RepositoryURL: git@github.com:ftechnology/TestApp.git
+- CloneIntoDir: /bitrise/src
+- Commit: 
+- Tag: 
+- Branch: main
+- PRDestBranch: 
+- PRID: 0
+- PRSourceRepositoryURL: 
+- PRMergeBranch: 
+- PRHeadBranch: 
+- ResetRepository: false
+- CloneDepth: 0
+- LimitSubmoduleUpdateDepth: true
+- ShouldMergePR: true
+- BuildURL: https://app.bitrise.io/build/02fab9ae40883fd7
+- BuildAPIToken: [REDACTED]
+- UpdateSubmodules: true
+- ManualMerge: true
+
+[34;1m$ git "init"[0m
+Initialized empty Git repository in /bitrise/src/.git/
+
+[34;1m$ git "remote" "add" "origin" "git@github.com:ftechnology/TestApp.git"[0m
+
+[34;1m$ git "fetch" "origin" "refs/heads/main"[0m
+Warning: Permanently added 'github.com,140.82.114.3' (RSA) to the list of known hosts.
+From github.com:ftechnology/TestApp
+ * branch            main       -> FETCH_HEAD
+ * [new branch]      main       -> origin/main
+
+[34;1m$ git "checkout" "main"[0m
+Switched to a new branch 'main'
+Branch main set up to track remote branch main from origin.
+
+[34;1m$ git "merge" "origin/main"[0m
+Already up-to-date.
+
+[34;1m$ git "submodule" "update" "--init" "--recursive" "--depth=1"[0m
+[34;1m
+Exporting git logs
+[0m
+[34;1m$ git "log" "-1" "--format=%H" &> out[0m
+=> GIT_CLONE_COMMIT_HASH
+   value: 6f0a0d75526845abc71adc1033f25cd924d79e20
+
+[34;1m$ git "log" "-1" "--format=%s" &> out[0m
+=> GIT_CLONE_COMMIT_MESSAGE_SUBJECT
+   value: Add files via upload
+
+[34;1m$ git "log" "-1" "--format=%b" &> out[0m
+=> GIT_CLONE_COMMIT_MESSAGE_BODY
+   value: 
+
+[34;1m$ git "log" "-1" "--format=%an" &> out[0m
+=> GIT_CLONE_COMMIT_AUTHOR_NAME
+   value: Faruk Hossain
+
+[34;1m$ git "log" "-1" "--format=%ae" &> out[0m
+=> GIT_CLONE_COMMIT_AUTHOR_EMAIL
+   value: faruk.it.09@gmail.com
+
+[34;1m$ git "log" "-1" "--format=%cn" &> out[0m
+=> GIT_CLONE_COMMIT_COMMITER_NAME
+   value: GitHub
+
+[34;1m$ git "log" "-1" "--format=%ce" &> out[0m
+=> GIT_CLONE_COMMIT_COMMITER_EMAIL
+   value: noreply@github.com
+
+[34;1m$ git "rev-list" "HEAD" "--count" &> out[0m
+=> GIT_CLONE_COMMIT_COUNT
+   value: 1
+
+[32;1m
+Success[0m
+|                                                                              |
++---+---------------------------------------------------------------+----------+
+| [32;1m✓[0m | [32;1mgit-clone@4[0m                                                   | 4.58 sec |
++---+---------------------------------------------------------------+----------+
+| Update available: 4 (4.3.0) -> 5.0.0                                         |
+|                                                                              |
+| Release notes are available below                                            |
+| https://github.com/bitrise-steplib/steps-git-clone/releases                  |
++---+---------------------------------------------------------------+----------+
+
+                                          ▼
+
++------------------------------------------------------------------------------+
+| (2) cache-pull@2                                                             |
++------------------------------------------------------------------------------+
+| id: cache-pull                                                               |
+| version: 2.5.0                                                               |
+| collection: https://github.com/bitrise-io/bitrise-steplib.git                |
+| toolkit: go                                                                  |
+| time: 2021-03-26T05:03:05Z                                                   |
++------------------------------------------------------------------------------+
+|                                                                              |
+[36mINFO[0m[05:03:05] Start installing (tar) with apt-get          
+[36mINFO[0m[05:03:05]  * [32;1m[OK][0m Step dependency (tar) installed, available. 
+[34;1mConfig:
+[0m- CacheAPIURL: [REDACTED]
+- DebugMode: false
+- AllowFallback: true
+- ExtractToRelativePath: false
+- StackID: linux-docker-android
+- BuildSlug: 02fab9ae40883fd7
+
+[34;1mDownloading remote cache archive[0m
+[31;1mFailed to get cache download url: build cache not found: probably cache not initialised yet (first cache push initialises the cache), nothing to worry about ;)[0m
+[33mWARN[0m[05:03:06] Step (cache-pull@2) failed, but was marked as skippable 
+|                                                                              |
++---+---------------------------------------------------------------+----------+
+| [33;1m![0m | [33;1mcache-pull@2 (exit code: 1)[0m                                   | 2.44 sec |
++---+---------------------------------------------------------------+----------+
+| Issue tracker: https://github.com/bitrise-steplib/steps-cache-pull/issues    |
+| Source: https://github.com/bitrise-steplib/steps-cache-pull.git              |
++---+---------------------------------------------------------------+----------+
+
+                                          ▼
+
++------------------------------------------------------------------------------+
+| (3) install-missing-android-tools@2                                          |
++------------------------------------------------------------------------------+
+| id: install-missing-android-tools                                            |
+| version: 2.3.8                                                               |
+| collection: https://github.com/bitrise-io/bitrise-steplib.git                |
+| toolkit: go                                                                  |
+| time: 2021-03-26T05:03:07Z                                                   |
++------------------------------------------------------------------------------+
+|                                                                              |
+[36mINFO[0m[05:03:07] Start installing (golang) with apt-get       
+[36mINFO[0m[05:03:07]  * [32;1m[OK][0m Step dependency (go) installed, available. 
+
+[34;1mConfigs:[0m
+- GradlewPath: ./gradlew
+- AndroidHome: /opt/android-sdk-linux
+- NDKRevision: 
+
+[34;1mPreparation[0m
+Set executable permission for gradlew
+
+[34;1mClearing NDK environment[0m
+Unset ANDROID_NDK_HOME
+Initialize Android SDK
+Ensure android licences
+
+[34;1mEnsure required Android SDK components[0m
+
+[32;1mRequired SDK components are installed[0m
+|                                                                              |
++---+---------------------------------------------------------------+----------+
+| [32;1m✓[0m | [32;1minstall-missing-android-tools@2[0m                               | 32.03 sec|
++---+---------------------------------------------------------------+----------+
+
+                                          ▼
+
++------------------------------------------------------------------------------+
+| (4) android-lint@0                                                           |
++------------------------------------------------------------------------------+
+| id: android-lint                                                             |
+| version: 0.9.8                                                               |
+| collection: https://github.com/bitrise-io/bitrise-steplib.git                |
+| toolkit: go                                                                  |
+| time: 2021-03-26T05:03:39Z                                                   |
++------------------------------------------------------------------------------+
+|                                                                              |
+[34;1mConfig:
+[0m- ProjectLocation: .
+- ReportPathPattern: */build/reports/lint-results*.html
+- Variant: debug
+- Module: app
+- Arguments: 
+- CacheLevel: only_deps
+- DeployDir: /bitrise/deploy
+
+[34;1mVariants:[0m
+
+app:
+[32;1m✓ Debug[0m
+- Release
+
+[34;1mRun lint:[0m
+
+[32;1m$ /bitrise/src/gradlew ":app:lintDebug"[0m
+
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:compileDebugAidl NO-SOURCE
+> Task :app:generateDebugBuildConfig
+> Task :app:compileDebugRenderscript NO-SOURCE
+> Task :app:checkDebugAarMetadata
+> Task :app:generateDebugResValues
+> Task :app:generateDebugResources
+> Task :app:createDebugCompatibleScreenManifests
+> Task :app:extractDeepLinksDebug
+> Task :app:mergeDebugResources
+> Task :app:processDebugMainManifest
+> Task :app:processDebugManifest
+> Task :app:processDebugManifestForPackage
+> Task :app:processDebugResources
+> Task :app:compileDebugKotlin
+> Task :app:javaPreCompileDebug
+> Task :app:compileDebugJavaWithJavac
+
+> Task :app:lintDebug
+Wrote HTML report to file:///bitrise/src/app/build/reports/lint-results-debug.html
+Wrote XML report to file:///bitrise/src/app/build/reports/lint-results-debug.xml
+
+BUILD SUCCESSFUL in 45s
+14 actionable tasks: 14 executed
+
+[34;1mExporting artifacts:[0m
+
+  Export [ lint-results-debug.html => $BITRISE_DEPLOY_DIR/app-lint-results-debug.html ]
+
+[34;1mCollecting cache:[0m
+[32;1m  Done[0m
+|                                                                              |
++---+---------------------------------------------------------------+----------+
+| [32;1m✓[0m | [32;1mandroid-lint@0[0m                                                | 50.64 sec|
++---+---------------------------------------------------------------+----------+
+
+                                          ▼
+
++------------------------------------------------------------------------------+
+| (5) detekt@1                                                                 |
++------------------------------------------------------------------------------+
+| id: detekt                                                                   |
+| version: 1.0.0                                                               |
+| collection: https://github.com/bitrise-io/bitrise-steplib.git                |
+| toolkit: bash                                                                |
+| time: 2021-03-26T05:04:30Z                                                   |
++------------------------------------------------------------------------------+
+|                                                                              |
+[36mINFO[0m[05:04:30] Start installing (git) with apt-get          
+[36mINFO[0m[05:04:30]  * [32;1m[OK][0m Step dependency (git) installed, available. 
+++ mktemp -d
++ detekt_dir=/tmp/tmp.kxICA7gILR
++ trap cleanup EXIT
++ export GIT_ASKPASS=:
++ GIT_ASKPASS=:
++ git clone https://github.com/arturbosch/detekt /tmp/tmp.kxICA7gILR
+Cloning into '/tmp/tmp.kxICA7gILR'...
++ pushd /tmp/tmp.kxICA7gILR
+/tmp/tmp.kxICA7gILR /bitrise/src
++ ./gradlew build shadowJar
+Downloading https://services.gradle.org/distributions/gradle-6.8.3-all.zip
+..............10%..............20%...............30%..............40%..............50%...............60%..............70%..............80%...............90%..............100%
+
+Welcome to Gradle 6.8.3!
+
+Here are the highlights of this release:
+ - Faster Kotlin DSL script compilation
+ - Vendor selection for Java toolchains
+ - Convenient execution of tasks in composite builds
+ - Consistent dependency resolution
+
+For more details see https://docs.gradle.org/6.8.3/release-notes.html
+
+Starting a Gradle Daemon (subsequent builds will be faster)
+> Task :buildSrc:extractPrecompiledScriptPluginPlugins
+> Task :buildSrc:generateExternalPluginSpecBuilders
+> Task :buildSrc:compilePluginsBlocks
+> Task :buildSrc:generatePrecompiledScriptPluginAccessors
+> Task :buildSrc:configurePrecompiledScriptDependenciesResolver
+> Task :buildSrc:generateScriptPluginAdapters
+> Task :buildSrc:compileKotlin
+> Task :buildSrc:compileJava NO-SOURCE
+> Task :buildSrc:compileGroovy NO-SOURCE
+> Task :buildSrc:pluginDescriptors
+> Task :buildSrc:processResources
+> Task :buildSrc:classes
+> Task :buildSrc:inspectClassesForKotlinIC
+> Task :buildSrc:jar
+> Task :buildSrc:assemble
+> Task :buildSrc:compileTestKotlin NO-SOURCE
+> Task :buildSrc:pluginUnderTestMetadata
+> Task :buildSrc:compileTestJava NO-SOURCE
+> Task :buildSrc:compileTestGroovy NO-SOURCE
+> Task :buildSrc:processTestResources NO-SOURCE
+> Task :buildSrc:testClasses UP-TO-DATE
+> Task :buildSrc:test NO-SOURCE
+> Task :buildSrc:validatePlugins
+> Task :buildSrc:check
+> Task :buildSrc:build
+> Task :detekt-api:processResources NO-SOURCE
+> Task :detekt-parser:processResources NO-SOURCE
+> Task :compileJava NO-SOURCE
+> Task :processResources NO-SOURCE
+> Task :classes UP-TO-DATE
+> Task :detekt-tooling:processResources NO-SOURCE
+> Task :jar
+> Task :assemble
+> Task :detekt-metrics:processResources NO-SOURCE
+> Task :detekt-cli:processResources
+> Task :custom-checks:processResources
+> Task :detekt-report-txt:processResources
+> Task :detekt-report-sarif:processResources
+> Task :detekt-report-html:processResources
+> Task :detekt-report-xml:processResources
+> Task :detekt-formatting:processResources
+> Task :detekt-core:processResources
+> Task :detekt-rules-complexity:processResources
+> Task :detekt-rules-coroutines:processResources
+> Task :detekt-rules-empty:processResources
+> Task :detekt-rules-errorprone:processResources
+> Task :detekt-rules-exceptions:processResources
+> Task :detekt-rules-documentation:processResources
+> Task :detekt-rules-naming:processResources
+> Task :detekt-rules:processResources NO-SOURCE
+> Task :detekt-rules-style:processResources
+> Task :detekt-rules-performance:processResources
+> Task :detekt-test-utils:processResources NO-SOURCE
+> Task :detekt-test:processResources NO-SOURCE
+> Task :compileTestJava NO-SOURCE
+> Task :custom-checks:processTestResources NO-SOURCE
+> Task :detekt-bom:assemble UP-TO-DATE
+> Task :detekt-bom:check UP-TO-DATE
+> Task :detekt-bom:build UP-TO-DATE
+> Task :processTestResources NO-SOURCE
+> Task :testClasses UP-TO-DATE
+> Task :test NO-SOURCE
+> Task :detekt-api:processTestResources
+> Task :detekt-api:processTestFixturesResources NO-SOURCE
+> Task :detekt-cli:processTestResources
+> Task :detekt-generator:processResources NO-SOURCE
+> Task :detekt-formatting:processTestResources
+> Task :detekt-generator:processTestResources
+> Task :detekt-metrics:processTestResources NO-SOURCE
+> Task :detekt-parser:processTestResources
+> Task :detekt-report-html:processTestResources
+> Task :detekt-report-sarif:processTestResources
+> Task :detekt-report-txt:processTestResources NO-SOURCE
+> Task :detekt-report-xml:processTestResources NO-SOURCE
+> Task :detekt-core:processTestResources
+> Task :detekt-rules-complexity:processTestResources
+> Task :detekt-rules-coroutines:processTestResources NO-SOURCE
+> Task :detekt-rules:processTestResources
+> Task :detekt-rules-documentation:processTestResources
+> Task :detekt-rules-empty:processTestResources
+> Task :detekt-rules-errorprone:processTestResources
+> Task :detekt-rules-exceptions:processTestResources
+> Task :detekt-rules-naming:processTestResources NO-SOURCE
+> Task :detekt-rules-performance:processTestResources NO-SOURCE
+> Task :detekt-sample-extensions:processResources
+> Task :detekt-rules-style:processTestResources
+> Task :detekt-sample-extensions:processTestResources NO-SOURCE
+> Task :detekt-test:processTestResources NO-SOURCE
+> Task :detekt-test-utils:processTestResources NO-SOURCE
+> Task :detekt-tooling:processTestResources
+> Task :detekt-psi-utils:compileKotlin
+> Task :detekt-psi-utils:compileJava NO-SOURCE
+> Task :detekt-psi-utils:processResources NO-SOURCE
+> Task :detekt-psi-utils:classes UP-TO-DATE
+> Task :detekt-psi-utils:inspectClassesForKotlinIC
+> Task :detekt-psi-utils:jar
+> Task :detekt-psi-utils:javadoc NO-SOURCE
+> Task :detekt-psi-utils:javadocJar
+> Task :detekt-psi-utils:sourcesJar
+> Task :detekt-psi-utils:assemble
+> Task :detekt-psi-utils:apiBuild
+> Task :detekt-psi-utils:apiCheck
+> Task :detekt-psi-utils:compileTestKotlin
+> Task :detekt-psi-utils:compileTestJava NO-SOURCE
+> Task :detekt-psi-utils:processTestResources NO-SOURCE
+> Task :detekt-psi-utils:testClasses UP-TO-DATE
+> Task :detekt-parser:compileKotlin
+> Task :detekt-parser:compileJava NO-SOURCE
+> Task :detekt-parser:classes UP-TO-DATE
+> Task :detekt-parser:inspectClassesForKotlinIC
+> Task :detekt-parser:jar
+> Task :detekt-gradle-plugin:compileKotlin
+> Task :detekt-test-utils:compileKotlin
+> Task :detekt-test-utils:compileJava NO-SOURCE
+> Task :detekt-test-utils:classes UP-TO-DATE
+> Task :detekt-test-utils:inspectClassesForKotlinIC
+> Task :detekt-test-utils:jar
+> Task :detekt-parser:javadoc NO-SOURCE
+> Task :detekt-parser:javadocJar
+> Task :detekt-parser:sourcesJar
+> Task :detekt-parser:assemble
+
+> Task :detekt-gradle-plugin:compileKotlin
+w: /tmp/tmp.kxICA7gILR/detekt-gradle-plugin/src/main/kotlin/io/gitlab/arturbosch/detekt/DetektCreateBaselineTask.kt: (115, 13): 'failFast: Property<Boolean>' is deprecated. Please use the buildUponDefaultConfig and allRules flags instead.
+w: /tmp/tmp.kxICA7gILR/detekt-gradle-plugin/src/main/kotlin/io/gitlab/arturbosch/detekt/DetektCreateBaselineTask.kt: (130, 30): 'failFast: Property<Boolean>' is deprecated. Please use the buildUponDefaultConfig and allRules flags instead.
+w: /tmp/tmp.kxICA7gILR/detekt-gradle-plugin/src/main/kotlin/io/gitlab/arturbosch/detekt/internal/SharedTasks.kt: (21, 50): 'failFast: Boolean' is deprecated. Please use the buildUponDefaultConfig and allRules flags instead.
+w: /tmp/tmp.kxICA7gILR/detekt-gradle-plugin/src/main/kotlin/io/gitlab/arturbosch/detekt/internal/SharedTasks.kt: (41, 12): 'failFast: Property<Boolean>' is deprecated. Please use the buildUponDefaultConfig and allRules flags instead.
+w: /tmp/tmp.kxICA7gILR/detekt-gradle-plugin/src/main/kotlin/io/gitlab/arturbosch/detekt/internal/SharedTasks.kt: (41, 54): 'failFast: Boolean' is deprecated. Please use the buildUponDefaultConfig and allRules flags instead.
+
+> Task :detekt-gradle-plugin:compileJava NO-SOURCE
+> Task :detekt-gradle-plugin:pluginDescriptors
+> Task :detekt-gradle-plugin:processResources
+> Task :detekt-gradle-plugin:classes
+> Task :detekt-gradle-plugin:inspectClassesForKotlinIC
+> Task :detekt-gradle-plugin:jar
+> Task :detekt-gradle-plugin:javadoc NO-SOURCE
+> Task :detekt-gradle-plugin:javadocJar
+> Task :detekt-gradle-plugin:sourcesJar
+> Task :detekt-gradle-plugin:assemble
+> Task :detekt-psi-utils:test
+> Task :detekt-test-utils:javadoc NO-SOURCE
+> Task :detekt-test-utils:javadocJar
+> Task :detekt-test-utils:sourcesJar
+> Task :detekt-test-utils:assemble
+> Task :detekt-test-utils:compileTestKotlin NO-SOURCE
+> Task :detekt-test-utils:compileTestJava NO-SOURCE
+> Task :detekt-test-utils:testClasses UP-TO-DATE
+> Task :detekt-test-utils:test NO-SOURCE
+> Task :detekt-parser:compileTestKotlin
+> Task :detekt-parser:compileTestJava NO-SOURCE
+> Task :detekt-parser:testClasses
+
+> Task :detekt-api:compileKotlin
+w: /tmp/tmp.kxICA7gILR/detekt-api/src/main/kotlin/io/gitlab/arturbosch/detekt/api/Location.kt: (28, 9): 'constructor Location(SourceLocation, TextLocation, String, FilePath = ...)' is deprecated. Consider relative path by passing a [FilePath]
+w: /tmp/tmp.kxICA7gILR/detekt-api/src/main/kotlin/io/gitlab/arturbosch/detekt/api/Location.kt: (45, 9): 'constructor Location(SourceLocation, TextLocation, String, FilePath = ...)' is deprecated. Consider relative path by passing a [FilePath]
+w: /tmp/tmp.kxICA7gILR/detekt-api/src/main/kotlin/io/gitlab/arturbosch/detekt/api/RuleSet.kt: (32, 13): 'pathFilters: PathFilters?' is deprecated. Exposes detekt-core implementation details.
+
+> Task :detekt-api:compileJava NO-SOURCE
+> Task :detekt-api:classes UP-TO-DATE
+> Task :detekt-api:inspectClassesForKotlinIC
+> Task :detekt-api:jar
+> Task :custom-checks:compileKotlin
+> Task :custom-checks:compileJava NO-SOURCE
+> Task :custom-checks:classes
+> Task :custom-checks:inspectClassesForKotlinIC
+> Task :custom-checks:jar
+> Task :detekt-tooling:compileKotlin
+> Task :detekt-tooling:compileJava NO-SOURCE
+> Task :detekt-tooling:classes UP-TO-DATE
+> Task :detekt-tooling:inspectClassesForKotlinIC
+> Task :detekt-tooling:jar
+> Task :detekt-cli:compileKotlin
+> Task :detekt-cli:compileJava NO-SOURCE
+> Task :detekt-cli:classes
+> Task :detekt-cli:inspectClassesForKotlinIC
+> Task :detekt-cli:jar
+> Task :detekt-parser:test
+> Task :detekt-metrics:compileKotlin
+> Task :detekt-metrics:compileJava NO-SOURCE
+> Task :detekt-metrics:classes UP-TO-DATE
+> Task :detekt-metrics:inspectClassesForKotlinIC
+> Task :detekt-metrics:jar
+> Task :detekt-report-txt:compileKotlin
+> Task :detekt-report-txt:compileJava NO-SOURCE
+> Task :detekt-report-txt:classes
+> Task :detekt-report-txt:inspectClassesForKotlinIC
+> Task :detekt-report-txt:jar
+> Task :detekt-report-sarif:compileKotlin
+> Task :detekt-report-sarif:compileJava NO-SOURCE
+> Task :detekt-report-sarif:classes
+> Task :detekt-report-sarif:inspectClassesForKotlinIC
+> Task :detekt-report-sarif:jar
+> Task :detekt-gradle-plugin:compileTestKotlin
+> Task :detekt-report-xml:compileKotlin
+> Task :detekt-report-xml:compileJava NO-SOURCE
+> Task :detekt-report-xml:classes
+> Task :detekt-report-xml:inspectClassesForKotlinIC
+> Task :detekt-report-xml:jar
+> Task :detekt-report-html:compileKotlin
+> Task :detekt-report-html:compileJava NO-SOURCE
+> Task :detekt-report-html:classes
+> Task :detekt-report-html:inspectClassesForKotlinIC
+> Task :detekt-report-html:jar
+> Task :detekt-formatting:compileKotlin
+> Task :detekt-formatting:compileJava NO-SOURCE
+> Task :detekt-formatting:classes
+> Task :detekt-formatting:inspectClassesForKotlinIC
+> Task :detekt-formatting:jar
+> Task :detekt-rules-complexity:compileKotlin
+> Task :detekt-rules-complexity:compileJava NO-SOURCE
+> Task :detekt-rules-complexity:classes
+> Task :detekt-rules-complexity:inspectClassesForKotlinIC
+> Task :detekt-rules-complexity:jar
+> Task :detekt-rules-coroutines:compileKotlin
+> Task :detekt-rules-coroutines:compileJava NO-SOURCE
+> Task :detekt-rules-coroutines:classes
+> Task :detekt-rules-coroutines:inspectClassesForKotlinIC
+> Task :detekt-rules-coroutines:jar
+> Task :detekt-rules-documentation:compileKotlin
+> Task :detekt-rules-documentation:compileJava NO-SOURCE
+> Task :detekt-rules-documentation:classes
+> Task :detekt-rules-documentation:inspectClassesForKotlinIC
+> Task :detekt-rules-documentation:jar
+> Task :detekt-rules-empty:compileKotlin
+> Task :detekt-rules-empty:compileJava NO-SOURCE
+> Task :detekt-rules-empty:classes
+> Task :detekt-rules-empty:inspectClassesForKotlinIC
+> Task :detekt-rules-empty:jar
+> Task :detekt-core:compileKotlin
+> Task :detekt-core:compileJava NO-SOURCE
+> Task :detekt-core:classes
+> Task :detekt-core:inspectClassesForKotlinIC
+> Task :detekt-core:jar
+> Task :detekt-rules-exceptions:compileKotlin
+> Task :detekt-rules-exceptions:compileJava NO-SOURCE
+> Task :detekt-rules-exceptions:classes
+> Task :detekt-rules-exceptions:inspectClassesForKotlinIC
+> Task :detekt-rules-exceptions:jar
+> Task :detekt-rules-performance:compileKotlin
+> Task :detekt-rules-performance:compileJava NO-SOURCE
+> Task :detekt-rules-performance:classes
+> Task :detekt-rules-performance:inspectClassesForKotlinIC
+> Task :detekt-rules-performance:jar
+> Task :custom-checks:javadoc NO-SOURCE
+> Task :custom-checks:javadocJar
+> Task :custom-checks:sourcesJar
+> Task :custom-checks:assemble
+> Task :detekt-rules-errorprone:compileKotlin
+> Task :detekt-rules-errorprone:compileJava NO-SOURCE
+> Task :detekt-rules-errorprone:classes
+> Task :detekt-rules-errorprone:inspectClassesForKotlinIC
+> Task :detekt-rules-errorprone:jar
+> Task :detekt-api:javadoc NO-SOURCE
+> Task :detekt-api:javadocJar
+> Task :detekt-api:sourcesJar
+> Task :detekt-api:assemble
+> Task :detekt-api:apiBuild
+> Task :detekt-api:apiCheck
+> Task :detekt-api:compileTestFixturesKotlin
+> Task :detekt-api:compileTestFixturesJava NO-SOURCE
+> Task :detekt-api:testFixturesClasses UP-TO-DATE
+> Task :detekt-api:testFixturesJar
+> Task :detekt-cli:javadoc NO-SOURCE
+> Task :detekt-cli:javadocJar
+> Task :detekt-cli:sourcesJar
+> Task :detekt-core:javadoc NO-SOURCE
+> Task :detekt-core:javadocJar
+> Task :detekt-core:sourcesJar
+> Task :detekt-core:assemble
+> Task :detekt-formatting:javadoc NO-SOURCE
+> Task :detekt-test:compileKotlin
+> Task :detekt-test:compileJava NO-SOURCE
+> Task :detekt-test:classes UP-TO-DATE
+> Task :detekt-test:inspectClassesForKotlinIC
+> Task :detekt-test:jar
+> Task :detekt-formatting:javadocJar
+> Task :detekt-rules-naming:compileKotlin
+> Task :detekt-rules-naming:compileJava NO-SOURCE
+> Task :detekt-rules-naming:classes
+> Task :detekt-rules-naming:inspectClassesForKotlinIC
+> Task :detekt-rules-naming:jar
+> Task :detekt-formatting:sourcesJar
+> Task :detekt-formatting:assemble
+> Task :custom-checks:compileTestKotlin
+> Task :custom-checks:compileTestJava NO-SOURCE
+> Task :custom-checks:testClasses UP-TO-DATE
+> Task :detekt-formatting:compileTestKotlin
+> Task :detekt-formatting:compileTestJava NO-SOURCE
+> Task :detekt-formatting:testClasses
+> Task :detekt-api:compileTestKotlin
+> Task :detekt-api:compileTestJava NO-SOURCE
+> Task :detekt-api:testClasses
+> Task :detekt-rules-style:compileKotlin
+> Task :custom-checks:test
+> Task :detekt-formatting:test
+> Task :detekt-api:test
+> Task :detekt-gradle-plugin:pluginUnderTestMetadata
+> Task :detekt-gradle-plugin:compileTestJava NO-SOURCE
+> Task :detekt-gradle-plugin:processTestResources
+> Task :detekt-gradle-plugin:testClasses
+
+> Task :custom-checks:test
+
+SpekTestDiscoverySpec > allows strings, paths and files by default STANDARD_ERROR
+    WARN: The registry key 'platform.random.idempotence.check.rate' accessed, but not loaded yet
+
+> Task :detekt-metrics:javadoc NO-SOURCE
+> Task :detekt-metrics:javadocJar
+> Task :detekt-metrics:sourcesJar
+> Task :detekt-metrics:assemble
+> Task :detekt-rules-style:compileJava NO-SOURCE
+> Task :detekt-rules-style:classes
+> Task :detekt-rules-style:inspectClassesForKotlinIC
+> Task :detekt-rules-style:jar
+> Task :detekt-rules:compileKotlin NO-SOURCE
+> Task :detekt-rules:compileJava NO-SOURCE
+> Task :detekt-rules:classes UP-TO-DATE
+> Task :detekt-rules:inspectClassesForKotlinIC
+> Task :detekt-rules:jar
+> Task :detekt NO-SOURCE
+> Task :check UP-TO-DATE
+> Task :build
+> Task :detekt-metrics:compileTestKotlin
+> Task :detekt-cli:startScripts
+> Task :detekt-cli:distTar
+> Task :custom-checks:detekt
+> Task :custom-checks:check
+> Task :custom-checks:build
+> Task :detekt-gradle-plugin:test
+> Task :detekt-api:detekt
+> Task :detekt-api:check
+> Task :detekt-api:build
+> Task :detekt-cli:distZip
+> Task :detekt-formatting:detekt
+> Task :detekt-formatting:check
+> Task :detekt-formatting:build
+> Task :detekt-core:detekt
+> Task :detekt-generator:compileKotlin
+> Task :detekt-generator:compileJava NO-SOURCE
+> Task :detekt-generator:classes UP-TO-DATE
+> Task :detekt-generator:inspectClassesForKotlinIC
+> Task :detekt-generator:jar
+> Task :detekt-generator:javadoc NO-SOURCE
+> Task :detekt-generator:javadocJar
+> Task :detekt-generator:sourcesJar
+> Task :detekt-generator:assemble
+> Task :detekt-cli:shadowJar
+> Task :detekt-generator:detekt
+> Task :detekt-generator:compileTestKotlin
+> Task :detekt-generator:compileTestJava NO-SOURCE
+> Task :detekt-generator:testClasses
+> Task :detekt-core:compileTestKotlin
+> Task :detekt-core:compileTestJava NO-SOURCE
+> Task :detekt-core:testClasses
+> Task :detekt-generator:test
+> Task :detekt-generator:check
+> Task :detekt-generator:build
+> Task :detekt-metrics:detekt
+> Task :detekt-metrics:compileTestJava NO-SOURCE
+> Task :detekt-metrics:testClasses UP-TO-DATE
+> Task :detekt-cli:startShadowScripts
+> Task :detekt-cli:shadowDistTar
+> Task :detekt-cli:shadowDistZip
+> Task :detekt-cli:assemble
+> Task :detekt-cli:detekt
+> Task :detekt-core:test
+> Task :detekt-metrics:test
+> Task :detekt-cli:compileTestKotlin
+> Task :detekt-cli:compileTestJava NO-SOURCE
+> Task :detekt-cli:testClasses
+> Task :detekt-metrics:check
+> Task :detekt-metrics:build
+> Task :detekt-parser:detekt
+> Task :detekt-parser:check
+> Task :detekt-parser:build
+> Task :detekt-psi-utils:detekt
+> Task :detekt-psi-utils:check
+> Task :detekt-psi-utils:build
+> Task :detekt-report-html:javadoc NO-SOURCE
+> Task :detekt-report-html:javadocJar
+> Task :detekt-report-html:sourcesJar
+> Task :detekt-report-html:assemble
+> Task :detekt-report-html:detekt
+> Task :detekt-core:check
+> Task :detekt-core:build
+> Task :detekt-report-sarif:javadoc NO-SOURCE
+> Task :detekt-report-sarif:javadocJar
+> Task :detekt-report-sarif:sourcesJar
+> Task :detekt-report-sarif:assemble
+> Task :detekt-report-html:compileTestKotlin
+> Task :detekt-report-html:compileTestJava NO-SOURCE
+> Task :detekt-report-html:testClasses
+> Task :detekt-report-sarif:detekt
+> Task :detekt-report-sarif:compileTestKotlin
+> Task :detekt-report-sarif:compileTestJava NO-SOURCE
+> Task :detekt-report-sarif:testClasses
+> Task :detekt-cli:test
+> Task :detekt-report-sarif:test
+> Task :detekt-report-sarif:check
+> Task :detekt-report-sarif:build
+> Task :detekt-report-txt:javadoc NO-SOURCE
+> Task :detekt-report-txt:javadocJar
+> Task :detekt-report-txt:sourcesJar
+> Task :detekt-report-txt:assemble
+> Task :detekt-report-txt:detekt
+> Task :detekt-report-html:test
+> Task :detekt-report-txt:compileTestKotlin
+> Task :detekt-report-txt:compileTestJava NO-SOURCE
+> Task :detekt-report-txt:testClasses UP-TO-DATE
+> Task :detekt-report-html:check
+> Task :detekt-report-html:build
+> Task :detekt-report-xml:javadoc NO-SOURCE
+> Task :detekt-report-xml:javadocJar
+> Task :detekt-report-xml:sourcesJar
+> Task :detekt-report-xml:assemble
+> Task :detekt-report-xml:detekt
+> Task :detekt-report-txt:test
+> Task :detekt-report-txt:check
+> Task :detekt-report-txt:build
+> Task :detekt-rules:javadoc NO-SOURCE
+> Task :detekt-rules:javadocJar
+> Task :detekt-rules:sourcesJar
+> Task :detekt-rules:assemble
+> Task :detekt-rules:detekt
+
+> Task :detekt-report-xml:compileTestKotlin
+w: /tmp/tmp.kxICA7gILR/detekt-report-xml/src/test/kotlin/io/github/detekt/report/xml/XmlOutputFormatSpec.kt: (27, 13): 'constructor Location(SourceLocation, TextLocation, String, FilePath = ...)' is deprecated. Consider relative path by passing a [FilePath]
+w: /tmp/tmp.kxICA7gILR/detekt-report-xml/src/test/kotlin/io/github/detekt/report/xml/XmlOutputFormatSpec.kt: (32, 13): 'constructor Location(SourceLocation, TextLocation, String, FilePath = ...)' is deprecated. Consider relative path by passing a [FilePath]
+
+> Task :detekt-report-xml:compileTestJava NO-SOURCE
+> Task :detekt-report-xml:testClasses UP-TO-DATE
+> Task :detekt-rules:compileTestKotlin
+> Task :detekt-rules:compileTestJava NO-SOURCE
+> Task :detekt-rules:testClasses
+> Task :detekt-report-xml:test
+> Task :detekt-report-xml:check
+> Task :detekt-report-xml:build
+> Task :detekt-rules:test
+> Task :detekt-rules:check
+> Task :detekt-rules:build
+> Task :detekt-rules-complexity:javadoc NO-SOURCE
+> Task :detekt-rules-complexity:javadocJar
+> Task :detekt-rules-complexity:sourcesJar
+> Task :detekt-rules-complexity:assemble
+> Task :detekt-rules-complexity:detekt
+> Task :detekt-api:dokkaJekyll
+Dokka 1.4.* is an alpha project
+Initializing plugins
+Creating documentation models
+
+> Task :detekt-rules-complexity:compileTestKotlin
+> Task :detekt-rules-complexity:compileTestJava NO-SOURCE
+> Task :detekt-rules-complexity:testClasses
+Daemon will be stopped at the end of the build after running out of JVM memory
+> Task :detekt-rules-complexity:test
+
+> Task :detekt-api:dokkaJekyll
+Transforming documentation model before merging
+Merging documentation models
+Transforming documentation model after merging
+Creating pages
+Transforming pages
+Rendering
+
+
+> Task :detekt-rules-complexity:test
+
+NamedArgumentsSpec > java method invocation should not be flagged STANDARD_ERROR
+    WARN: The registry key 'platform.random.idempotence.check.rate' accessed, but not loaded yet
+
+> Task :detekt-generator:generateDocumentation
+Wrote: /tmp/tmp.kxICA7gILR/docs/pages/documentation/complexity.md
+Wrote: /tmp/tmp.kxICA7gILR/docs/pages/documentation/coroutines.md
+Wrote: /tmp/tmp.kxICA7gILR/docs/pages/documentation/comments.md
+Wrote: /tmp/tmp.kxICA7gILR/docs/pages/documentation/empty-blocks.md
+Wrote: /tmp/tmp.kxICA7gILR/docs/pages/documentation/potential-bugs.md
+Wrote: /tmp/tmp.kxICA7gILR/docs/pages/documentation/exceptions.md
+Wrote: /tmp/tmp.kxICA7gILR/docs/pages/documentation/naming.md
+Wrote: /tmp/tmp.kxICA7gILR/docs/pages/documentation/performance.md
+Wrote: /tmp/tmp.kxICA7gILR/docs/pages/documentation/style.md
+Wrote: /tmp/tmp.kxICA7gILR/docs/pages/documentation/formatting.md
+Wrote: /tmp/tmp.kxICA7gILR/detekt-core/src/main/resources/default-detekt-config.yml
+
+Generated all detekt documentation in 13443 ms.
+
+> Task :detekt-rules-coroutines:javadoc NO-SOURCE
+> Task :detekt-rules-coroutines:javadocJar
+> Task :detekt-rules-coroutines:sourcesJar
+> Task :detekt-rules-coroutines:assemble
+> Task :detekt-rules-complexity:check
+> Task :detekt-rules-complexity:build
+> Task :detekt-rules-documentation:javadoc NO-SOURCE
+> Task :detekt-rules-documentation:javadocJar
+> Task :detekt-rules-documentation:sourcesJar
+> Task :detekt-rules-documentation:assemble
+> Task :detekt-rules-coroutines:detekt
+> Task :detekt-rules-documentation:detekt
+> Task :detekt-rules-coroutines:compileTestKotlin
+> Task :detekt-rules-coroutines:compileTestJava NO-SOURCE
+> Task :detekt-rules-coroutines:testClasses UP-TO-DATE
+> Task :detekt-rules-documentation:compileTestKotlin
+> Task :detekt-rules-documentation:compileTestJava NO-SOURCE
+> Task :detekt-rules-documentation:testClasses
+> Task :detekt-rules-coroutines:test
+> Task :detekt-rules-documentation:test
+> Task :detekt-rules-documentation:check
+> Task :detekt-rules-documentation:build
+> Task :detekt-rules-empty:javadoc NO-SOURCE
+> Task :detekt-rules-empty:javadocJar
+> Task :detekt-rules-empty:sourcesJar
+> Task :detekt-rules-empty:assemble
+> Task :detekt-rules-empty:detekt
+
+> Task :detekt-rules-coroutines:test
+
+RedundantSuspendModifierSpec > ignores when iterator is suspending STANDARD_ERROR
+    WARN: The registry key 'platform.random.idempotence.check.rate' accessed, but not loaded yet
+
+> Task :detekt-rules-empty:compileTestKotlin
+> Task :detekt-rules-empty:compileTestJava NO-SOURCE
+> Task :detekt-rules-empty:testClasses
+> Task :detekt-rules-coroutines:check
+> Task :detekt-rules-coroutines:build
+> Task :detekt-rules-errorprone:javadoc NO-SOURCE
+> Task :detekt-rules-errorprone:javadocJar
+> Task :detekt-rules-errorprone:sourcesJar
+> Task :detekt-rules-errorprone:assemble
+> Task :detekt-rules-empty:test
+> Task :detekt-rules-errorprone:detekt
+> Task :detekt-rules-empty:check
+> Task :detekt-rules-empty:build
+> Task :detekt-rules-exceptions:javadoc NO-SOURCE
+> Task :detekt-rules-exceptions:javadocJar
+> Task :detekt-rules-exceptions:sourcesJar
+> Task :detekt-rules-exceptions:assemble
+> Task :detekt-rules-exceptions:detekt
+> Task :detekt-rules-exceptions:compileTestKotlin
+> Task :detekt-rules-exceptions:compileTestJava NO-SOURCE
+> Task :detekt-rules-exceptions:testClasses
+> Task :detekt-rules-errorprone:compileTestKotlin
+> Task :detekt-rules-errorprone:compileTestJava NO-SOURCE
+> Task :detekt-rules-errorprone:testClasses
+> Task :detekt-rules-exceptions:test
+
+InstanceOfCheckForExceptionSpec > has is and as checks STANDARD_ERROR
+    WARN: The registry key 'platform.random.idempotence.check.rate' accessed, but not loaded yet
+
+> Task :detekt-rules-errorprone:test
+> Task :detekt-cli:check
+> Task :detekt-cli:build
+> Task :detekt-rules-naming:javadoc NO-SOURCE
+> Task :detekt-rules-naming:javadocJar
+> Task :detekt-rules-naming:sourcesJar
+> Task :detekt-rules-naming:assemble
+
+> Task :detekt-rules-errorprone:test
+
+DeprecationSpec > reports when supertype is deprecated STANDARD_ERROR
+    WARN: The registry key 'platform.random.idempotence.check.rate' accessed, but not loaded yet
+
+> Task :detekt-rules-naming:detekt
+> Task :detekt-rules-exceptions:check
+> Task :detekt-rules-exceptions:build
+> Task :detekt-rules-performance:javadoc NO-SOURCE
+> Task :detekt-rules-performance:javadocJar
+> Task :detekt-rules-performance:sourcesJar
+> Task :detekt-rules-performance:assemble
+> Task :detekt-rules-performance:detekt
+> Task :detekt-rules-naming:compileTestKotlin
+> Task :detekt-rules-naming:compileTestJava NO-SOURCE
+> Task :detekt-rules-naming:testClasses UP-TO-DATE
+> Task :detekt-rules-performance:compileTestKotlin
+> Task :detekt-rules-performance:compileTestJava NO-SOURCE
+> Task :detekt-rules-performance:testClasses UP-TO-DATE
+> Task :detekt-rules-naming:test
+> Task :detekt-rules-performance:test
+
+> Task :detekt-rules-naming:test
+
+NoNameShadowingSpec > report shadowing variable STANDARD_ERROR
+    WARN: The registry key 'platform.random.idempotence.check.rate' accessed, but not loaded yet
+
+> Task :detekt-rules-performance:check
+> Task :detekt-rules-performance:build
+> Task :detekt-rules-style:javadoc NO-SOURCE
+> Task :detekt-rules-style:javadocJar
+> Task :detekt-rules-style:sourcesJar
+> Task :detekt-rules-style:assemble
+> Task :detekt-rules-naming:check
+> Task :detekt-rules-naming:build
+> Task :detekt-sample-extensions:compileKotlin
+> Task :detekt-sample-extensions:compileJava NO-SOURCE
+> Task :detekt-sample-extensions:classes
+> Task :detekt-sample-extensions:inspectClassesForKotlinIC
+> Task :detekt-sample-extensions:jar
+> Task :detekt-sample-extensions:javadoc NO-SOURCE
+> Task :detekt-sample-extensions:javadocJar
+> Task :detekt-sample-extensions:sourcesJar
+> Task :detekt-sample-extensions:assemble
+> Task :detekt-sample-extensions:detekt
+> Task :detekt-sample-extensions:compileTestKotlin
+> Task :detekt-sample-extensions:compileTestJava NO-SOURCE
+> Task :detekt-sample-extensions:testClasses UP-TO-DATE
+> Task :detekt-rules-style:detekt
+> Task :detekt-rules-errorprone:check
+> Task :detekt-rules-errorprone:build
+> Task :detekt-test:javadoc NO-SOURCE
+> Task :detekt-test:javadocJar
+> Task :detekt-test:sourcesJar
+> Task :detekt-test:assemble
+> Task :detekt-test:detekt
+> Task :detekt-test:compileTestKotlin NO-SOURCE
+> Task :detekt-test:compileTestJava NO-SOURCE
+> Task :detekt-test:testClasses UP-TO-DATE
+> Task :detekt-test:test NO-SOURCE
+> Task :detekt-test:check
+> Task :detekt-test:build
+> Task :detekt-test-utils:detekt
+> Task :detekt-test-utils:check
+> Task :detekt-test-utils:build
+> Task :detekt-tooling:javadoc NO-SOURCE
+> Task :detekt-tooling:javadocJar
+> Task :detekt-tooling:sourcesJar
+> Task :detekt-tooling:assemble
+> Task :detekt-tooling:detekt
+> Task :detekt-tooling:compileTestKotlin
+> Task :detekt-tooling:compileTestJava NO-SOURCE
+> Task :detekt-tooling:testClasses
+> Task :detekt-sample-extensions:test
+> Task :detekt-sample-extensions:check
+> Task :detekt-sample-extensions:build
+> Task :detekt-tooling:test
+> Task :detekt-tooling:check
+> Task :detekt-tooling:build
+> Task :detekt-rules-style:compileTestKotlin
+
+> Task :detekt-gradle-plugin:test
+
+DetektMultiplatformTest > configures check tasks FAILED
+    org.gradle.testkit.runner.UnexpectedBuildFailure: Unexpected build execution failure in /tmp/applyPlugin3801729204709821233 with arguments [--stacktrace, --info, --build-cache, -Dorg.gradle.jvmargs=-Xmx2g -XX:MaxMetaspaceSize=512m, -Pdetekt-dry-run=true, :shared:check]
+
+    Output:
+    The client will now receive all logging from the daemon (pid: 3567). The daemon log file: /tmp/.gradle-test-kit-root/test-kit-daemon/6.8.3/daemon-3567.out.log
+    Starting 49th build in daemon [uptime: 10 mins 21.373 secs, performance: 98%, GC rate: 0.01/s, heap usage: 3% of 1.3 GiB, non-heap usage: 44% of 512 MiB]
+    Using 2 worker leases.
+    Closing daemon's stdin at end of input.
+    The daemon will no longer process any standard input.
+    Watching the file system is disabled
+    Starting Build
+    Settings evaluated using settings file '/tmp/applyPlugin3801729204709821233/settings.gradle'.
+    Using local directory build cache for the root build (location = /tmp/.gradle-test-kit-root/caches/build-cache-1, removeUnusedEntriesAfter = 7 days).
+    Projects loaded. Root project using build file '/tmp/applyPlugin3801729204709821233/build.gradle'.
+    Included projects: [root project 'rootDir-project', project ':shared']
+
+    > Configure project :
+    Evaluating root project 'rootDir-project' using build file '/tmp/applyPlugin3801729204709821233/build.gradle'.
+
+    > Configure project :shared
+    Evaluating project ':shared' using build file '/tmp/applyPlugin3801729204709821233/shared/build.gradle'.
+    Kotlin Multiplatform Projects are an Alpha feature. See: https://kotlinlang.org/docs/reference/evolution/components-stability.html. To hide this message, add 'kotlin.mpp.stability.nowarn=true' to the Gradle properties.
+
+    [KOTLIN] Storing cached files in /tmp/.gradle-test-kit-root
+    [KOTLIN] Storing cached files in /tmp/.gradle-test-kit-root
+    All projects evaluated.
+    Selected primary task ':shared:check' from project :shared
+    Downloading https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-stdlib-js/1.4.21/kotlin-stdlib-js-1.4.21.pom to /tmp/gradle_download5945563271204861228bin
+    Downloading https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-test-js-runner/1.4.21/kotlin-test-js-runner-1.4.21.pom to /tmp/gradle_download2962511749888846617bin
+    Downloading https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-test-js/1.4.21/kotlin-test-js-1.4.21.pom to /tmp/gradle_download8870532400606036187bin
+    Downloading https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-test-common/1.4.21/kotlin-test-common-1.4.21.pom to /tmp/gradle_download5379835210994688620bin
+    Downloading https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-test-annotations-common/1.4.21/kotlin-test-annotations-common-1.4.21.pom to /tmp/gradle_download4711133566337136787bin
+    Downloading https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-stdlib-js/1.4.21/kotlin-stdlib-js-1.4.21.jar to /tmp/gradle_download313832330346693443bin
+    Downloading https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-test-js-runner/1.4.21/kotlin-test-js-runner-1.4.21.jar to /tmp/gradle_download5281741278018826854bin
+    Downloading https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-test-js/1.4.21/kotlin-test-js-1.4.21.jar to /tmp/gradle_download6420002773266001345bin
+    Downloading https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-test-common/1.4.21/kotlin-test-common-1.4.21.jar to /tmp/gradle_download5202837829520489743bin
+    Downloading https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-test-annotations-common/1.4.21/kotlin-test-annotations-common-1.4.21.jar to /tmp/gradle_download9114299844234194961bin
+    Tasks to be executed: [task ':kotlinNodeJsSetup', task ':shared:jsPackageJson', task ':shared:jsTestPackageJson', task ':rootPackageJson', task ':kotlinNpmInstall', task ':shared:jsGenerateExternalsIntegrated', task ':shared:compileKotlinJs', task ':shared:jsProcessResources', task ':shared:jsMainClasses', task ':shared:compileTestKotlinJs', task ':shared:jsTestProcessResources', task ':shared:jsTestClasses', task ':shared:jsBrowserTest', task ':shared:jsTest', task ':shared:allTests', task ':shared:detekt', task ':shared:detektJsMain', task ':shared:detektJsTest', task ':shared:detektMetadataMain', task ':shared:check']
+    Tasks that were excluded: []
+    :kotlinNodeJsSetup (Thread[Daemon worker,5,main]) started.
+
+    > Task :kotlinNodeJsSetup
+    Build cache key for task ':kotlinNodeJsSetup' is b93d2f585d0c01946bacd277e776c4f1
+    Task ':kotlinNodeJsSetup' is not up-to-date because:
+      No history is available.
+    Downloading https://nodejs.org/dist/v12.16.1/node-v12.16.1-linux-x64.tar.gz to /tmp/gradle_download2574063686599148226bin
+    [KOTLIN] Using node distribution from '/tmp/.gradle-test-kit-root/caches/modules-2/files-2.1/org.nodejs/node/12.16.1/662d0e50496f017ae70fae3b0255848c0cc33c77/node-12.16.1-linux-x64.tar.gz'
+    [KOTLIN] Unpacking /tmp/.gradle-test-kit-root/caches/modules-2/files-2.1/org.nodejs/node/12.16.1/662d0e50496f017ae70fae3b0255848c0cc33c77/node-12.16.1-linux-x64.tar.gz to /tmp/.gradle-test-kit-root/nodejs
+    Stored cache entry for task ':kotlinNodeJsSetup' with cache key b93d2f585d0c01946bacd277e776c4f1
+    :kotlinNodeJsSetup (Thread[Daemon worker,5,main]) completed. Took 29.047 secs.
+    :shared:jsPackageJson (Thread[Daemon worker,5,main]) started.
+
+    > Task :shared:jsPackageJson
+    Caching disabled for task ':shared:jsPackageJson' because:
+      Caching has not been enabled for the task
+    Task ':shared:jsPackageJson' is not up-to-date because:
+      No history is available.
+    :shared:jsPackageJson (Thread[Daemon worker,5,main]) completed. Took 1.061 secs.
+    :shared:jsTestPackageJson (Thread[Execution worker for ':',5,main]) started.
+
+    > Task :shared:jsTestPackageJson
+    Caching disabled for task ':shared:jsTestPackageJson' because:
+      Caching has not been enabled for the task
+    Task ':shared:jsTestPackageJson' is not up-to-date because:
+      No history is available.
+    :shared:jsTestPackageJson (Thread[Execution worker for ':',5,main]) completed. Took 0.026 secs.
+    :rootPackageJson (Thread[Execution worker for ':',5,main]) started.
+
+    > Task :rootPackageJson
+    Caching disabled for task ':rootPackageJson' because:
+      Caching has not been enabled for the task
+    Task ':rootPackageJson' is not up-to-date because:
+      Task.upToDateWhen is false.
+    Download https://github.com/yarnpkg/yarn/releases/download/v1.22.4/yarn-v1.22.4.tar.gz
+    :rootPackageJson (Thread[Execution worker for ':',5,main]) completed. Took 1.406 secs.
+    :kotlinNpmInstall (Thread[Execution worker for ':',5,main]) started.
+
+    > Task :kotlinNpmInstall
+    Caching disabled for task ':kotlinNpmInstall' because:
+      Caching has not been enabled for the task
+    Task ':kotlinNpmInstall' is not up-to-date because:
+      No history is available.
+    Starting process 'command '/tmp/.gradle-test-kit-root/nodejs/node-v12.16.1-linux-x64/bin/node''. Working directory: /tmp/applyPlugin3801729204709821233/build/js Command: /tmp/.gradle-test-kit-root/nodejs/node-v12.16.1-linux-x64/bin/node /tmp/.gradle-test-kit-root/yarn/yarn-v1.22.4/bin/yarn.js 
+    Successfully started process 'command '/tmp/.gradle-test-kit-root/nodejs/node-v12.16.1-linux-x64/bin/node''
+    warning workspace-aggregator-75b5b53d-afa9-41c4-8471-b4af33151659 > rootDir-project-shared-test > mocha > debug@3.2.6: Debug versions >=3.2.0 <3.2.7 || >=4 <4.3.1 have a low-severity ReDos regression when used in a Node.js environment. It is recommended you upgrade to 3.2.7 or 4.3.1. (https://github.com/visionmedia/debug/issues/797)
+    warning workspace-aggregator-75b5b53d-afa9-41c4-8471-b4af33151659 > rootDir-project-shared-test > karma > socket.io > debug@4.1.1: Debug versions >=3.2.0 <3.2.7 || >=4 <4.3.1 have a low-severity ReDos regression when used in a Node.js environment. It is recommended you upgrade to 3.2.7 or 4.3.1. (https://github.com/visionmedia/debug/issues/797)
+    warning workspace-aggregator-75b5b53d-afa9-41c4-8471-b4af33151659 > rootDir-project-shared-test > mocha > chokidar > fsevents@2.1.3: "Please update to latest v2.3 or v2.2"
+    warning workspace-aggregator-75b5b53d-afa9-41c4-8471-b4af33151659 > rootDir-project-shared-test > karma > socket.io > engine.io > debug@4.1.1: Debug versions >=3.2.0 <3.2.7 || >=4 <4.3.1 have a low-severity ReDos regression when used in a Node.js environment. It is recommended you upgrade to 3.2.7 or 4.3.1. (https://github.com/visionmedia/debug/issues/797)
+    warning workspace-aggregator-75b5b53d-afa9-41c4-8471-b4af33151659 > rootDir-project-shared-test > karma > socket.io > socket.io-parser > debug@4.1.1: Debug versions >=3.2.0 <3.2.7 || >=4 <4.3.1 have a low-severity ReDos regression when used in a Node.js environment. It is recommended you upgrade to 3.2.7 or 4.3.1. (https://github.com/visionmedia/debug/issues/797)
+    warning workspace-aggregator-75b5b53d-afa9-41c4-8471-b4af33151659 > rootDir-project-shared-test > webpack > watchpack > watchpack-chokidar2 > chokidar@2.1.8: Chokidar 2 will break on node v14+. Upgrade to chokidar 3 with 15x less dependencies.
+    warning workspace-aggregator-75b5b53d-afa9-41c4-8471-b4af33151659 > rootDir-project-shared-test > webpack > watchpack > watchpack-chokidar2 > chokidar > fsevents@1.2.13: fsevents 1 will break on node v14+ and could be using insecure binaries. Upgrade to fsevents 2.
+    warning workspace-aggregator-75b5b53d-afa9-41c4-8471-b4af33151659 > rootDir-project-shared-test > webpack > micromatch > snapdragon > source-map-resolve > resolve-url@0.2.1: https://github.com/lydell/resolve-url#deprecated
+    warning workspace-aggregator-75b5b53d-afa9-41c4-8471-b4af33151659 > rootDir-project-shared-test > webpack > micromatch > snapdragon > source-map-resolve > urix@0.1.0: Please see https://github.com/lydell/urix#deprecated
+    :kotlinNpmInstall (Thread[Execution worker for ':',5,main]) completed. Took 26.234 secs.
+    :shared:jsGenerateExternalsIntegrated (Thread[Daemon worker,5,main]) started.
+
+    > Task :shared:jsGenerateExternalsIntegrated
+    Caching disabled for task ':shared:jsGenerateExternalsIntegrated' because:
+      Caching has not been enabled for the task
+    Task ':shared:jsGenerateExternalsIntegrated' is not up-to-date because:
+      No history is available.
+    :shared:jsGenerateExternalsIntegrated (Thread[Daemon worker,5,main]) completed. Took 0.022 secs.
+    :shared:compileKotlinJs (Thread[Execution worker for ':',5,main]) started.
+
+    > Task :shared:compileKotlinJs
+    Build cache key for task ':shared:compileKotlinJs' is 5ced251f4a1d33b28dccc5bfeae98848
+    Task ':shared:compileKotlinJs' is not up-to-date because:
+      No history is available.
+    The input changes require a full rebuild for incremental task ':shared:compileKotlinJs'.
+    file or directory '/tmp/applyPlugin3801729204709821233/shared/build/externals/rootDir-project-shared/src', not found
+    file or directory '/tmp/applyPlugin3801729204709821233/shared/build/externals/rootDir-project-shared/src', not found
+    Using Kotlin/JS incremental compilation
+    i: found daemon on port 17949 (319000 ms old), trying to connect
+    i: connected to the daemon
+    Options for KOTLIN DAEMON: IncrementalCompilationOptions(super=CompilationOptions(compilerMode=INCREMENTAL_COMPILER, targetPlatform=JS, reportCategories=[0], reportSeverity=2, requestedCompilationResults=[0]kotlinScriptExtensions=[]), areFileChangesKnown=false, modifiedFiles=null, deletedFiles=null, workingDir=/tmp/applyPlugin3801729204709821233/shared/build/kotlin/compileKotlinJs, multiModuleICSettings=MultiModuleICSettings(buildHistoryFile=/tmp/applyPlugin3801729204709821233/shared/build/kotlin/compileKotlinJs/build-history.bin, useModuleDetection=false), usePreciseJavaTracking=falseoutputFiles=[/tmp/applyPlugin3801729204709821233/build/js/packages/rootDir-project-shared/kotlin, /tmp/applyPlugin3801729204709821233/build/js/packages/rootDir-project-shared/kotlin/rootDir-project-shared.js, /tmp/applyPlugin3801729204709821233/shared/build/kotlin/compileKotlinJs])
+    Stored cache entry for task ':shared:compileKotlinJs' with cache key 5ced251f4a1d33b28dccc5bfeae98848
+    :shared:compileKotlinJs (Thread[Execution worker for ':',5,main]) completed. Took 3.011 secs.
+    :shared:jsProcessResources (Thread[Execution worker for ':',5,main]) started.
+
+    > Task :shared:jsProcessResources NO-SOURCE
+    file or directory '/tmp/applyPlugin3801729204709821233/shared/src/jsMain/resources', not found
+    file or directory '/tmp/applyPlugin3801729204709821233/shared/src/commonMain/resources', not found
+    Skipping task ':shared:jsProcessResources' as it has no source files and no previous output files.
+    :shared:jsProcessResources (Thread[Execution worker for ':',5,main]) completed. Took 0.011 secs.
+    :shared:jsMainClasses (Thread[Execution worker for ':',5,main]) started.
+
+    > Task :shared:jsMainClasses
+    Skipping task ':shared:jsMainClasses' as it has no actions.
+    :shared:jsMainClasses (Thread[Execution worker for ':',5,main]) completed. Took 0.0 secs.
+    :shared:compileTestKotlinJs (Thread[Execution worker for ':',5,main]) started.
+
+    > Task :shared:compileTestKotlinJs
+    Build cache key for task ':shared:compileTestKotlinJs' is 93f27170e8f35a8a6665c903ab6b66f9
+    Task ':shared:compileTestKotlinJs' is not up-to-date because:
+      No history is available.
+    The input changes require a full rebuild for incremental task ':shared:compileTestKotlinJs'.
+    Using Kotlin/JS incremental compilation
+    i: found daemon on port 17949 (322000 ms old), trying to connect
+    i: connected to the daemon
+    Options for KOTLIN DAEMON: IncrementalCompilationOptions(super=CompilationOptions(compilerMode=INCREMENTAL_COMPILER, targetPlatform=JS, reportCategories=[0], reportSeverity=2, requestedCompilationResults=[0]kotlinScriptExtensions=[]), areFileChangesKnown=false, modifiedFiles=null, deletedFiles=null, workingDir=/tmp/applyPlugin3801729204709821233/shared/build/kotlin/compileTestKotlinJs, multiModuleICSettings=MultiModuleICSettings(buildHistoryFile=/tmp/applyPlugin3801729204709821233/shared/build/kotlin/compileTestKotlinJs/build-history.bin, useModuleDetection=false), usePreciseJavaTracking=falseoutputFiles=[/tmp/applyPlugin3801729204709821233/build/js/packages/rootDir-project-shared-test/kotlin, /tmp/applyPlugin3801729204709821233/build/js/packages/rootDir-project-shared-test/kotlin/rootDir-project-shared-test.js, /tmp/applyPlugin3801729204709821233/shared/build/kotlin/compileTestKotlinJs])
+    Stored cache entry for task ':shared:compileTestKotlinJs' with cache key 93f27170e8f35a8a6665c903ab6b66f9
+    :shared:compileTestKotlinJs (Thread[Execution worker for ':',5,main]) completed. Took 1.068 secs.
+    :shared:jsTestProcessResources (Thread[Daemon worker,5,main]) started.
+
+    > Task :shared:jsTestProcessResources NO-SOURCE
+    file or directory '/tmp/applyPlugin3801729204709821233/shared/src/jsTest/resources', not found
+    file or directory '/tmp/applyPlugin3801729204709821233/shared/src/commonTest/resources', not found
+    Skipping task ':shared:jsTestProcessResources' as it has no source files and no previous output files.
+    :shared:jsTestProcessResources (Thread[Daemon worker,5,main]) completed. Took 0.0 secs.
+    :shared:jsTestClasses (Thread[Daemon worker,5,main]) started.
+
+    > Task :shared:jsTestClasses
+    Skipping task ':shared:jsTestClasses' as it has no actions.
+    :shared:jsTestClasses (Thread[Daemon worker,5,main]) completed. Took 0.0 secs.
+    :shared:jsBrowserTest (Thread[Daemon worker,5,main]) started.
+
+    > Task :shared:jsBrowserTest
+    Caching disabled for task ':shared:jsBrowserTest' because:
+      Caching has not been enabled for the task
+    Task ':shared:jsBrowserTest' is not up-to-date because:
+      No history is available.
+    Starting process 'command '/tmp/.gradle-test-kit-root/nodejs/node-v12.16.1-linux-x64/bin/node''. Working directory: /tmp/applyPlugin3801729204709821233/build/js/packages/rootDir-project-shared-test Command: /tmp/.gradle-test-kit-root/nodejs/node-v12.16.1-linux-x64/bin/node /tmp/applyPlugin3801729204709821233/build/js/node_modules/karma/bin/karma start /tmp/applyPlugin3801729204709821233/build/js/packages/rootDir-project-shared-test/karma.conf.js
+    Successfully started process 'command '/tmp/.gradle-test-kit-root/nodejs/node-v12.16.1-linux-x64/bin/node''
+    Karma v5.1.1 server started at http://localhost:9876/
+    Launching browsers ChromeHeadless with concurrency unlimited
+    Starting browser ChromeHeadless
+    No binary for ChromeHeadless browser on your platform.
+      Please, set "CHROME_BIN" env variable.
+    java.lang.IllegalStateException: Errors occurred during launch of browser for testing.
+    - ChromeHeadless
+    Please make sure that you have installed browsers.
+    Or change it via
+    browser {
+        testTask {
+            useKarma {
+                useFirefox()
+                useChrome()
+                useSafari()
+            }
+        }
+    }
+    Test report disabled, omitting generation of the HTML test report.
+    :shared:jsBrowserTest (Thread[Daemon worker,5,main]) completed. Took 10.039 secs.
+    :shared:jsTest (Thread[Execution worker for ':',5,main]) started.
+
+    > Task :shared:jsTest
+    Caching disabled for task ':shared:jsTest' because:
+      Caching has not been enabled for the task
+    Task ':shared:jsTest' is not up-to-date because:
+      No history is available.
+    :shared:jsTest - no binary test results found in dirs: [/tmp/applyPlugin3801729204709821233/shared/build/test-results/jsBrowserTest/binary].
+    :shared:jsTest (Thread[Execution worker for ':',5,main]) completed. Took 0.003 secs.
+    :shared:allTests (Thread[Execution worker for ':',5,main]) started.
+
+    > Task :shared:allTests FAILED
+    Caching disabled for task ':shared:allTests' because:
+      Caching has not been enabled for the task
+    Task ':shared:allTests' is not up-to-date because:
+      No history is available.
+    :shared:allTests - no binary test results found in dirs: [/tmp/applyPlugin3801729204709821233/shared/build/test-results/jsBrowserTest/binary].
+    :shared:allTests (Thread[Execution worker for ':',5,main]) completed. Took 0.022 secs.
+
+    FAILURE: Build failed with an exception.
+
+    * What went wrong:
+    Execution failed for task ':shared:allTests'.
+    > Failed to execute all tests:
+      :shared:jsBrowserTest: java.lang.IllegalStateException: Errors occurred during launch of browser for testing.
+      - ChromeHeadless
+      Please make sure that you have installed browsers.
+      Or change it via
+      browser {
+          testTask {
+              useKarma {
+                  useFirefox()
+                  useChrome()
+                  useSafari()
+              }
+          }
+      }
+
+    * Try:
+    Run with --debug option to get more log output. Run with --scan to get full insights.
+
+    * Exception is:
+    org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':shared:allTests'.
+    	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.lambda$executeIfValid$3(ExecuteActionsTaskExecuter.java:186)
+    	at org.gradle.internal.Try$Failure.ifSuccessfulOrElse(Try.java:268)
+    	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:184)
+    	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.execute(ExecuteActionsTaskExecuter.java:173)
+    	at org.gradle.api.internal.tasks.execution.CleanupStaleOutputsExecuter.execute(CleanupStaleOutputsExecuter.java:109)
+    	at org.gradle.api.internal.tasks.execution.FinalizePropertiesTaskExecuter.execute(FinalizePropertiesTaskExecuter.java:46)
+    	at org.gradle.api.internal.tasks.execution.ResolveTaskExecutionModeExecuter.execute(ResolveTaskExecutionModeExecuter.java:62)
+    	at org.gradle.api.internal.tasks.execution.SkipTaskWithNoActionsExecuter.execute(SkipTaskWithNoActionsExecuter.java:57)
+    	at org.gradle.api.internal.tasks.execution.SkipOnlyIfTaskExecuter.execute(SkipOnlyIfTaskExecuter.java:56)
+    	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:36)
+    	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
+    	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
+    	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:52)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:200)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:195)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner$3.execute(DefaultBuildOperationRunner.java:75)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner$3.execute(DefaultBuildOperationRunner.java:68)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:153)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:68)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:62)
+    	at org.gradle.internal.operations.DefaultBuildOperationExecutor.lambda$call$2(DefaultBuildOperationExecutor.java:76)
+    	at org.gradle.internal.operations.UnmanagedBuildOperationWrapper.callWithUnmanagedSupport(UnmanagedBuildOperationWrapper.java:54)
+    	at org.gradle.internal.operations.DefaultBuildOperationExecutor.call(DefaultBuildOperationExecutor.java:76)
+    	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter.execute(EventFiringTaskExecuter.java:52)
+    	at org.gradle.execution.plan.LocalTaskNodeExecutor.execute(LocalTaskNodeExecutor.java:41)
+    	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:411)
+    	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:398)
+    	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:391)
+    	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:377)
+    	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.lambda$run$0(DefaultPlanExecutor.java:127)
+    	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:191)
+    	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.executeNextNode(DefaultPlanExecutor.java:182)
+    	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:124)
+    	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+    	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:48)
+    	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:56)
+    Caused by: org.jetbrains.kotlin.gradle.testing.internal.MultiCauseException: Failed to execute all tests:
+    :shared:jsBrowserTest: java.lang.IllegalStateException: Errors occurred during launch of browser for testing.
+    - ChromeHeadless
+    Please make sure that you have installed browsers.
+    Or change it via
+    browser {
+        testTask {
+            useKarma {
+                useFirefox()
+                useChrome()
+                useSafari()
+            }
+        }
+    }
+    	at org.jetbrains.kotlin.gradle.testing.internal.KotlinTestReport.checkSuppressedRunningFailures(KotlinTestReport.kt:206)
+    	at org.jetbrains.kotlin.gradle.testing.internal.KotlinTestReport.checkFailedTests(KotlinTestReport.kt:143)
+    	at org.gradle.internal.reflect.JavaMethod.invoke(JavaMethod.java:104)
+    	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.doExecute(StandardTaskAction.java:58)
+    	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.execute(StandardTaskAction.java:51)
+    	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.execute(StandardTaskAction.java:29)
+    	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter$2.run(ExecuteActionsTaskExecuter.java:494)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:29)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:26)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner$3.execute(DefaultBuildOperationRunner.java:75)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner$3.execute(DefaultBuildOperationRunner.java:68)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:153)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:68)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner.run(DefaultBuildOperationRunner.java:56)
+    	at org.gradle.internal.operations.DefaultBuildOperationExecutor.lambda$run$1(DefaultBuildOperationExecutor.java:71)
+    	at org.gradle.internal.operations.UnmanagedBuildOperationWrapper.runWithUnmanagedSupport(UnmanagedBuildOperationWrapper.java:45)
+    	at org.gradle.internal.operations.DefaultBuildOperationExecutor.run(DefaultBuildOperationExecutor.java:71)
+    	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeAction(ExecuteActionsTaskExecuter.java:479)
+    	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeActions(ExecuteActionsTaskExecuter.java:462)
+    	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.access$400(ExecuteActionsTaskExecuter.java:105)
+    	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter$TaskExecution.executeWithPreviousOutputFiles(ExecuteActionsTaskExecuter.java:273)
+    	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter$TaskExecution.execute(ExecuteActionsTaskExecuter.java:251)
+    	at org.gradle.internal.execution.steps.ExecuteStep.lambda$executeOperation$1(ExecuteStep.java:66)
+    	at org.gradle.internal.execution.steps.ExecuteStep.executeOperation(ExecuteStep.java:66)
+    	at org.gradle.internal.execution.steps.ExecuteStep.access$000(ExecuteStep.java:34)
+    	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:47)
+    	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:44)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:200)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:195)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner$3.execute(DefaultBuildOperationRunner.java:75)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner$3.execute(DefaultBuildOperationRunner.java:68)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:153)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:68)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:62)
+    	at org.gradle.internal.operations.DefaultBuildOperationExecutor.lambda$call$2(DefaultBuildOperationExecutor.java:76)
+    	at org.gradle.internal.operations.UnmanagedBuildOperationWrapper.callWithUnmanagedSupport(UnmanagedBuildOperationWrapper.java:54)
+    	at org.gradle.internal.operations.DefaultBuildOperationExecutor.call(DefaultBuildOperationExecutor.java:76)
+    	at org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:44)
+    	at org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:34)
+    	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.execute(RemovePreviousOutputsStep.java:72)
+    	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.execute(RemovePreviousOutputsStep.java:42)
+    	at org.gradle.internal.execution.steps.ResolveInputChangesStep.execute(ResolveInputChangesStep.java:53)
+    	at org.gradle.internal.execution.steps.ResolveInputChangesStep.execute(ResolveInputChangesStep.java:39)
+    	at org.gradle.internal.execution.steps.CancelExecutionStep.execute(CancelExecutionStep.java:44)
+    	at org.gradle.internal.execution.steps.TimeoutStep.executeWithoutTimeout(TimeoutStep.java:77)
+    	at org.gradle.internal.execution.steps.TimeoutStep.execute(TimeoutStep.java:58)
+    	at org.gradle.internal.execution.steps.CreateOutputsStep.execute(CreateOutputsStep.java:54)
+    	at org.gradle.internal.execution.steps.CreateOutputsStep.execute(CreateOutputsStep.java:32)
+    	at org.gradle.internal.execution.steps.CaptureStateAfterExecutionStep.execute(CaptureStateAfterExecutionStep.java:57)
+    	at org.gradle.internal.execution.steps.CaptureStateAfterExecutionStep.execute(CaptureStateAfterExecutionStep.java:38)
+    	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:63)
+    	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:30)
+    	at org.gradle.internal.execution.steps.BuildCacheStep.executeWithoutCache(BuildCacheStep.java:176)
+    	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:76)
+    	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:47)
+    	at org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:43)
+    	at org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:32)
+    	at org.gradle.internal.execution.steps.RecordOutputsStep.execute(RecordOutputsStep.java:39)
+    	at org.gradle.internal.execution.steps.RecordOutputsStep.execute(RecordOutputsStep.java:25)
+    	at org.gradle.internal.execution.steps.SkipUpToDateStep.executeBecause(SkipUpToDateStep.java:102)
+    	at org.gradle.internal.execution.steps.SkipUpToDateStep.lambda$execute$0(SkipUpToDateStep.java:95)
+    	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:55)
+    	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:39)
+    	at org.gradle.internal.execution.steps.ResolveChangesStep.execute(ResolveChangesStep.java:83)
+    	at org.gradle.internal.execution.steps.ResolveChangesStep.execute(ResolveChangesStep.java:44)
+    	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:37)
+    	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:27)
+    	at org.gradle.internal.execution.steps.ResolveCachingStateStep.execute(ResolveCachingStateStep.java:96)
+    	at org.gradle.internal.execution.steps.ResolveCachingStateStep.execute(ResolveCachingStateStep.java:52)
+    	at org.gradle.internal.execution.steps.CaptureStateBeforeExecutionStep.execute(CaptureStateBeforeExecutionStep.java:83)
+    	at org.gradle.internal.execution.steps.CaptureStateBeforeExecutionStep.execute(CaptureStateBeforeExecutionStep.java:54)
+    	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:74)
+    	at org.gradle.internal.execution.steps.SkipEmptyWorkStep.lambda$execute$2(SkipEmptyWorkStep.java:88)
+    	at org.gradle.internal.execution.steps.SkipEmptyWorkStep.execute(SkipEmptyWorkStep.java:88)
+    	at org.gradle.internal.execution.steps.SkipEmptyWorkStep.execute(SkipEmptyWorkStep.java:34)
+    	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsStartedStep.execute(MarkSnapshottingInputsStartedStep.java:38)
+    	at org.gradle.internal.execution.steps.LoadExecutionStateStep.execute(LoadExecutionStateStep.java:46)
+    	at org.gradle.internal.execution.steps.LoadExecutionStateStep.execute(LoadExecutionStateStep.java:34)
+    	at org.gradle.internal.execution.steps.AssignWorkspaceStep.lambda$execute$0(AssignWorkspaceStep.java:43)
+    	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter$TaskExecution$3.withWorkspace(ExecuteActionsTaskExecuter.java:286)
+    	at org.gradle.internal.execution.steps.AssignWorkspaceStep.execute(AssignWorkspaceStep.java:43)
+    	at org.gradle.internal.execution.steps.AssignWorkspaceStep.execute(AssignWorkspaceStep.java:33)
+    	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:40)
+    	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:30)
+    	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:54)
+    	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:40)
+    	at org.gradle.internal.execution.impl.DefaultExecutionEngine.execute(DefaultExecutionEngine.java:41)
+    	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.lambda$executeIfValid$1(ExecuteActionsTaskExecuter.java:183)
+    	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:183)
+    	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.execute(ExecuteActionsTaskExecuter.java:173)
+    	at org.gradle.api.internal.tasks.execution.CleanupStaleOutputsExecuter.execute(CleanupStaleOutputsExecuter.java:109)
+    	at org.gradle.api.internal.tasks.execution.FinalizePropertiesTaskExecuter.execute(FinalizePropertiesTaskExecuter.java:46)
+    	at org.gradle.api.internal.tasks.execution.ResolveTaskExecutionModeExecuter.execute(ResolveTaskExecutionModeExecuter.java:62)
+    	at org.gradle.api.internal.tasks.execution.SkipTaskWithNoActionsExecuter.execute(SkipTaskWithNoActionsExecuter.java:57)
+    	at org.gradle.api.internal.tasks.execution.SkipOnlyIfTaskExecuter.execute(SkipOnlyIfTaskExecuter.java:56)
+    	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:36)
+    	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
+    	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
+    	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:52)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:200)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:195)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner$3.execute(DefaultBuildOperationRunner.java:75)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner$3.execute(DefaultBuildOperationRunner.java:68)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:153)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:68)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:62)
+    	at org.gradle.internal.operations.DefaultBuildOperationExecutor.lambda$call$2(DefaultBuildOperationExecutor.java:76)
+    	at org.gradle.internal.operations.UnmanagedBuildOperationWrapper.callWithUnmanagedSupport(UnmanagedBuildOperationWrapper.java:54)
+    	at org.gradle.internal.operations.DefaultBuildOperationExecutor.call(DefaultBuildOperationExecutor.java:76)
+    	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter.execute(EventFiringTaskExecuter.java:52)
+    	at org.gradle.execution.plan.LocalTaskNodeExecutor.execute(LocalTaskNodeExecutor.java:41)
+    	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:411)
+    	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:398)
+    	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:391)
+    	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:377)
+    	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.lambda$run$0(DefaultPlanExecutor.java:127)
+    	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:191)
+    	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.executeNextNode(DefaultPlanExecutor.java:182)
+    	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:124)
+    	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+    	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:48)
+    	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:56)
+    Caused by: java.lang.Error: java.lang.IllegalStateException: Errors occurred during launch of browser for testing.
+    - ChromeHeadless
+    Please make sure that you have installed browsers.
+    Or change it via
+    browser {
+        testTask {
+            useKarma {
+                useFirefox()
+                useChrome()
+                useSafari()
+            }
+        }
+    }
+    	at org.jetbrains.kotlin.gradle.internal.testing.TCServiceMessagesTestExecutor$execute$1.invoke(TCServiceMessagesTestExecutor.kt:81)
+    	at org.jetbrains.kotlin.gradle.internal.testing.TCServiceMessagesTestExecutor$execute$1.invoke(TCServiceMessagesTestExecutor.kt:34)
+    	at org.jetbrains.kotlin.gradle.targets.js.testing.karma.KotlinKarma$createTestExecutionSpec$4$wrapExecute$1.invoke(KotlinKarma.kt:409)
+    	at org.jetbrains.kotlin.gradle.targets.js.testing.karma.KotlinKarma$createTestExecutionSpec$4$wrapExecute$1.invoke(KotlinKarma.kt:398)
+    	at org.jetbrains.kotlin.gradle.internal.ProgressKt.operation(progress.kt:23)
+    	at org.jetbrains.kotlin.gradle.internal.ProgressKt.operation$default(progress.kt:15)
+    	at org.jetbrains.kotlin.gradle.targets.js.testing.karma.KotlinKarma$createTestExecutionSpec$4.wrapExecute$kotlin_gradle_plugin(KotlinKarma.kt:407)
+    	at org.jetbrains.kotlin.gradle.internal.testing.TCServiceMessagesTestExecutor.execute(TCServiceMessagesTestExecutor.kt:46)
+    	at org.jetbrains.kotlin.gradle.internal.testing.TCServiceMessagesTestExecutor.execute(TCServiceMessagesTestExecutor.kt:34)
+    	at org.gradle.api.tasks.testing.AbstractTestTask.executeTests(AbstractTestTask.java:477)
+    	at org.jetbrains.kotlin.gradle.targets.js.testing.KotlinJsTest.executeTests(KotlinJsTest.kt:135)
+    	at org.gradle.internal.reflect.JavaMethod.invoke(JavaMethod.java:104)
+    	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.doExecute(StandardTaskAction.java:58)
+    	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.execute(StandardTaskAction.java:51)
+    	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.execute(StandardTaskAction.java:29)
+    	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter$2.run(ExecuteActionsTaskExecuter.java:494)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:29)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:26)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner$3.execute(DefaultBuildOperationRunner.java:75)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner$3.execute(DefaultBuildOperationRunner.java:68)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:153)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:68)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner.run(DefaultBuildOperationRunner.java:56)
+    	at org.gradle.internal.operations.DefaultBuildOperationExecutor.lambda$run$1(DefaultBuildOperationExecutor.java:71)
+    	at org.gradle.internal.operations.UnmanagedBuildOperationWrapper.runWithUnmanagedSupport(UnmanagedBuildOperationWrapper.java:45)
+    	at org.gradle.internal.operations.DefaultBuildOperationExecutor.run(DefaultBuildOperationExecutor.java:71)
+    	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeAction(ExecuteActionsTaskExecuter.java:479)
+    	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeActions(ExecuteActionsTaskExecuter.java:462)
+    	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.access$400(ExecuteActionsTaskExecuter.java:105)
+    	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter$TaskExecution.executeWithPreviousOutputFiles(ExecuteActionsTaskExecuter.java:273)
+    	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter$TaskExecution.execute(ExecuteActionsTaskExecuter.java:251)
+    	at org.gradle.internal.execution.steps.ExecuteStep.lambda$executeOperation$1(ExecuteStep.java:66)
+    	at org.gradle.internal.execution.steps.ExecuteStep.executeOperation(ExecuteStep.java:66)
+    	at org.gradle.internal.execution.steps.ExecuteStep.access$000(ExecuteStep.java:34)
+    	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:47)
+    	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:44)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:200)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:195)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner$3.execute(DefaultBuildOperationRunner.java:75)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner$3.execute(DefaultBuildOperationRunner.java:68)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:153)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:68)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:62)
+    	at org.gradle.internal.operations.DefaultBuildOperationExecutor.lambda$call$2(DefaultBuildOperationExecutor.java:76)
+    	at org.gradle.internal.operations.UnmanagedBuildOperationWrapper.callWithUnmanagedSupport(UnmanagedBuildOperationWrapper.java:54)
+    	at org.gradle.internal.operations.DefaultBuildOperationExecutor.call(DefaultBuildOperationExecutor.java:76)
+    	at org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:44)
+    	at org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:34)
+    	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.execute(RemovePreviousOutputsStep.java:72)
+    	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.execute(RemovePreviousOutputsStep.java:42)
+    	at org.gradle.internal.execution.steps.ResolveInputChangesStep.execute(ResolveInputChangesStep.java:53)
+    	at org.gradle.internal.execution.steps.ResolveInputChangesStep.execute(ResolveInputChangesStep.java:39)
+    	at org.gradle.internal.execution.steps.CancelExecutionStep.execute(CancelExecutionStep.java:44)
+    	at org.gradle.internal.execution.steps.TimeoutStep.executeWithoutTimeout(TimeoutStep.java:77)
+    	at org.gradle.internal.execution.steps.TimeoutStep.execute(TimeoutStep.java:58)
+    	at org.gradle.internal.execution.steps.CreateOutputsStep.execute(CreateOutputsStep.java:54)
+    	at org.gradle.internal.execution.steps.CreateOutputsStep.execute(CreateOutputsStep.java:32)
+    	at org.gradle.internal.execution.steps.CaptureStateAfterExecutionStep.execute(CaptureStateAfterExecutionStep.java:57)
+    	at org.gradle.internal.execution.steps.CaptureStateAfterExecutionStep.execute(CaptureStateAfterExecutionStep.java:38)
+    	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:63)
+    	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:30)
+    	at org.gradle.internal.execution.steps.BuildCacheStep.executeWithoutCache(BuildCacheStep.java:176)
+    	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:76)
+    	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:47)
+    	at org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:43)
+    	at org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:32)
+    	at org.gradle.internal.execution.steps.RecordOutputsStep.execute(RecordOutputsStep.java:39)
+    	at org.gradle.internal.execution.steps.RecordOutputsStep.execute(RecordOutputsStep.java:25)
+    	at org.gradle.internal.execution.steps.SkipUpToDateStep.executeBecause(SkipUpToDateStep.java:102)
+    	at org.gradle.internal.execution.steps.SkipUpToDateStep.lambda$execute$0(SkipUpToDateStep.java:95)
+    	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:55)
+    	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:39)
+    	at org.gradle.internal.execution.steps.ResolveChangesStep.execute(ResolveChangesStep.java:83)
+    	at org.gradle.internal.execution.steps.ResolveChangesStep.execute(ResolveChangesStep.java:44)
+    	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:37)
+    	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:27)
+    	at org.gradle.internal.execution.steps.ResolveCachingStateStep.execute(ResolveCachingStateStep.java:96)
+    	at org.gradle.internal.execution.steps.ResolveCachingStateStep.execute(ResolveCachingStateStep.java:52)
+    	at org.gradle.internal.execution.steps.CaptureStateBeforeExecutionStep.execute(CaptureStateBeforeExecutionStep.java:83)
+    	at org.gradle.internal.execution.steps.CaptureStateBeforeExecutionStep.execute(CaptureStateBeforeExecutionStep.java:54)
+    	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:74)
+    	at org.gradle.internal.execution.steps.SkipEmptyWorkStep.lambda$execute$2(SkipEmptyWorkStep.java:88)
+    	at org.gradle.internal.execution.steps.SkipEmptyWorkStep.execute(SkipEmptyWorkStep.java:88)
+    	at org.gradle.internal.execution.steps.SkipEmptyWorkStep.execute(SkipEmptyWorkStep.java:34)
+    	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsStartedStep.execute(MarkSnapshottingInputsStartedStep.java:38)
+    	at org.gradle.internal.execution.steps.LoadExecutionStateStep.execute(LoadExecutionStateStep.java:46)
+    	at org.gradle.internal.execution.steps.LoadExecutionStateStep.execute(LoadExecutionStateStep.java:34)
+    	at org.gradle.internal.execution.steps.AssignWorkspaceStep.lambda$execute$0(AssignWorkspaceStep.java:43)
+    	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter$TaskExecution$3.withWorkspace(ExecuteActionsTaskExecuter.java:286)
+    	at org.gradle.internal.execution.steps.AssignWorkspaceStep.execute(AssignWorkspaceStep.java:43)
+    	at org.gradle.internal.execution.steps.AssignWorkspaceStep.execute(AssignWorkspaceStep.java:33)
+    	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:40)
+    	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:30)
+    	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:54)
+    	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:40)
+    	at org.gradle.internal.execution.impl.DefaultExecutionEngine.execute(DefaultExecutionEngine.java:41)
+    	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.lambda$executeIfValid$1(ExecuteActionsTaskExecuter.java:183)
+    	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:183)
+    	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.execute(ExecuteActionsTaskExecuter.java:173)
+    	at org.gradle.api.internal.tasks.execution.CleanupStaleOutputsExecuter.execute(CleanupStaleOutputsExecuter.java:109)
+    	at org.gradle.api.internal.tasks.execution.FinalizePropertiesTaskExecuter.execute(FinalizePropertiesTaskExecuter.java:46)
+    	at org.gradle.api.internal.tasks.execution.ResolveTaskExecutionModeExecuter.execute(ResolveTaskExecutionModeExecuter.java:62)
+    	at org.gradle.api.internal.tasks.execution.SkipTaskWithNoActionsExecuter.execute(SkipTaskWithNoActionsExecuter.java:57)
+    	at org.gradle.api.internal.tasks.execution.SkipOnlyIfTaskExecuter.execute(SkipOnlyIfTaskExecuter.java:56)
+    	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:36)
+    	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
+    	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
+    	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:52)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:200)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:195)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner$3.execute(DefaultBuildOperationRunner.java:75)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner$3.execute(DefaultBuildOperationRunner.java:68)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:153)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:68)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:62)
+    	at org.gradle.internal.operations.DefaultBuildOperationExecutor.lambda$call$2(DefaultBuildOperationExecutor.java:76)
+    	at org.gradle.internal.operations.UnmanagedBuildOperationWrapper.callWithUnmanagedSupport(UnmanagedBuildOperationWrapper.java:54)
+    	at org.gradle.internal.operations.DefaultBuildOperationExecutor.call(DefaultBuildOperationExecutor.java:76)
+    	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter.execute(EventFiringTaskExecuter.java:52)
+    	at org.gradle.execution.plan.LocalTaskNodeExecutor.execute(LocalTaskNodeExecutor.java:41)
+    	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:411)
+    	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:398)
+    	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:391)
+    	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:377)
+    	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.lambda$run$0(DefaultPlanExecutor.java:127)
+    	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:191)
+    	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.executeNextNode(DefaultPlanExecutor.java:182)
+    	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:124)
+    	at org.gradle.execution.plan.DefaultPlanExecutor.process(DefaultPlanExecutor.java:72)
+    	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph.executeWithServices(DefaultTaskExecutionGraph.java:196)
+    	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph.execute(DefaultTaskExecutionGraph.java:189)
+    	at org.gradle.execution.SelectedTaskExecutionAction.execute(SelectedTaskExecutionAction.java:39)
+    	at org.gradle.execution.DefaultBuildWorkExecutor.execute(DefaultBuildWorkExecutor.java:40)
+    	at org.gradle.execution.DefaultBuildWorkExecutor.access$000(DefaultBuildWorkExecutor.java:24)
+    	at org.gradle.execution.DefaultBuildWorkExecutor$1.proceed(DefaultBuildWorkExecutor.java:48)
+    	at org.gradle.execution.DryRunBuildExecutionAction.execute(DryRunBuildExecutionAction.java:49)
+    	at org.gradle.execution.DefaultBuildWorkExecutor.execute(DefaultBuildWorkExecutor.java:40)
+    	at org.gradle.execution.DefaultBuildWorkExecutor.execute(DefaultBuildWorkExecutor.java:33)
+    	at org.gradle.execution.IncludedBuildLifecycleBuildWorkExecutor.execute(IncludedBuildLifecycleBuildWorkExecutor.java:36)
+    	at org.gradle.execution.DeprecateUndefinedBuildWorkExecutor.execute(DeprecateUndefinedBuildWorkExecutor.java:44)
+    	at org.gradle.execution.BuildOperationFiringBuildWorkerExecutor$ExecuteTasks.run(BuildOperationFiringBuildWorkerExecutor.java:57)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:29)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:26)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner$3.execute(DefaultBuildOperationRunner.java:75)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner$3.execute(DefaultBuildOperationRunner.java:68)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:153)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:68)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner.run(DefaultBuildOperationRunner.java:56)
+    	at org.gradle.internal.operations.DefaultBuildOperationExecutor.lambda$run$1(DefaultBuildOperationExecutor.java:71)
+    	at org.gradle.internal.operations.UnmanagedBuildOperationWrapper.runWithUnmanagedSupport(UnmanagedBuildOperationWrapper.java:45)
+    	at org.gradle.internal.operations.DefaultBuildOperationExecutor.run(DefaultBuildOperationExecutor.java:71)
+    	at org.gradle.execution.BuildOperationFiringBuildWorkerExecutor.execute(BuildOperationFiringBuildWorkerExecutor.java:42)
+    	at org.gradle.initialization.DefaultGradleLauncher.runWork(DefaultGradleLauncher.java:260)
+    	at org.gradle.initialization.DefaultGradleLauncher.doClassicBuildStages(DefaultGradleLauncher.java:172)
+    	at org.gradle.initialization.DefaultGradleLauncher.doBuildStages(DefaultGradleLauncher.java:148)
+    	at org.gradle.initialization.DefaultGradleLauncher.executeTasks(DefaultGradleLauncher.java:124)
+    	at org.gradle.internal.invocation.GradleBuildController$1.create(GradleBuildController.java:72)
+    	at org.gradle.internal.invocation.GradleBuildController$1.create(GradleBuildController.java:67)
+    	at org.gradle.internal.work.DefaultWorkerLeaseService.withLocks(DefaultWorkerLeaseService.java:213)
+    	at org.gradle.internal.invocation.GradleBuildController.doBuild(GradleBuildController.java:67)
+    	at org.gradle.internal.invocation.GradleBuildController.run(GradleBuildController.java:56)
+    	at org.gradle.tooling.internal.provider.runner.BuildModelActionRunner.run(BuildModelActionRunner.java:56)
+    	at org.gradle.launcher.exec.ChainingBuildActionRunner.run(ChainingBuildActionRunner.java:35)
+    	at org.gradle.launcher.exec.ChainingBuildActionRunner.run(ChainingBuildActionRunner.java:35)
+    	at org.gradle.launcher.exec.BuildOutcomeReportingBuildActionRunner.run(BuildOutcomeReportingBuildActionRunner.java:63)
+    	at org.gradle.tooling.internal.provider.ValidatingBuildActionRunner.run(ValidatingBuildActionRunner.java:32)
+    	at org.gradle.tooling.internal.provider.FileSystemWatchingBuildActionRunner.run(FileSystemWatchingBuildActionRunner.java:77)
+    	at org.gradle.launcher.exec.BuildCompletionNotifyingBuildActionRunner.run(BuildCompletionNotifyingBuildActionRunner.java:41)
+    	at org.gradle.launcher.exec.RunAsBuildOperationBuildActionRunner$3.call(RunAsBuildOperationBuildActionRunner.java:49)
+    	at org.gradle.launcher.exec.RunAsBuildOperationBuildActionRunner$3.call(RunAsBuildOperationBuildActionRunner.java:44)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:200)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:195)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner$3.execute(DefaultBuildOperationRunner.java:75)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner$3.execute(DefaultBuildOperationRunner.java:68)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:153)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:68)
+    	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:62)
+    	at org.gradle.internal.operations.DefaultBuildOperationExecutor.lambda$call$2(DefaultBuildOperationExecutor.java:76)
+    	at org.gradle.internal.operations.UnmanagedBuildOperationWrapper.callWithUnmanagedSupport(UnmanagedBuildOperationWrapper.java:54)
+    	at org.gradle.internal.operations.DefaultBuildOperationExecutor.call(DefaultBuildOperationExecutor.java:76)
+    	at org.gradle.launcher.exec.RunAsBuildOperationBuildActionRunner.run(RunAsBuildOperationBuildActionRunner.java:44)
+    	at org.gradle.launcher.exec.InProcessBuildActionExecuter.lambda$execute$0(InProcessBuildActionExecuter.java:54)
+    	at org.gradle.composite.internal.DefaultRootBuildState.run(DefaultRootBuildState.java:86)
+    	at org.gradle.launcher.exec.InProcessBuildActionExecuter.execute(InProcessBuildActionExecuter.java:53)
+    	at org.gradle.launcher.exec.InProcessBuildActionExecuter.execute(InProcessBuildActionExecuter.java:29)
+    	at org.gradle.launcher.exec.BuildTreeScopeLifecycleBuildActionExecuter.lambda$execute$0(BuildTreeScopeLifecycleBuildActionExecuter.java:33)
+    	at org.gradle.internal.buildtree.BuildTreeState.run(BuildTreeState.java:49)
+    	at org.gradle.launcher.exec.BuildTreeScopeLifecycleBuildActionExecuter.execute(BuildTreeScopeLifecycleBuildActionExecuter.java:32)
+    	at org.gradle.launcher.exec.BuildTreeScopeLifecycleBuildActionExecuter.execute(BuildTreeScopeLifecycleBuildActionExecuter.java:27)
+    	at org.gradle.tooling.internal.provider.ContinuousBuildActionExecuter.execute(ContinuousBuildActionExecuter.java:104)
+    	at org.gradle.tooling.internal.provider.ContinuousBuildActionExecuter.execute(ContinuousBuildActionExecuter.java:55)
+    	at org.gradle.tooling.internal.provider.SubscribableBuildActionExecuter.execute(SubscribableBuildActionExecuter.java:64)
+    	at org.gradle.tooling.internal.provider.SubscribableBuildActionExecuter.execute(SubscribableBuildActionExecuter.java:37)
+    	at org.gradle.tooling.internal.provider.SessionScopeLifecycleBuildActionExecuter.lambda$execute$0(SessionScopeLifecycleBuildActionExecuter.java:54)
+    	at org.gradle.internal.session.BuildSessionState.run(BuildSessionState.java:67)
+    	at org.gradle.tooling.internal.provider.SessionScopeLifecycleBuildActionExecuter.execute(SessionScopeLifecycleBuildActionExecuter.java:50)
+    	at org.gradle.tooling.internal.provider.SessionScopeLifecycleBuildActionExecuter.execute(SessionScopeLifecycleBuildActionExecuter.java:36)
+    	at org.gradle.tooling.internal.provider.GradleThreadBuildActionExecuter.execute(GradleThreadBuildActionExecuter.java:36)
+    	at org.gradle.tooling.internal.provider.GradleThreadBuildActionExecuter.execute(GradleThreadBuildActionExecuter.java:25)
+    	at org.gradle.tooling.internal.provider.StartParamsValidatingActionExecuter.execute(StartParamsValidatingActionExecuter.java:59)
+    	at org.gradle.tooling.internal.provider.StartParamsValidatingActionExecuter.execute(StartParamsValidatingActionExecuter.java:31)
+    	at org.gradle.tooling.internal.provider.SessionFailureReportingActionExecuter.execute(SessionFailureReportingActionExecuter.java:55)
+    	at org.gradle.tooling.internal.provider.SessionFailureReportingActionExecuter.execute(SessionFailureReportingActionExecuter.java:41)
+    	at org.gradle.tooling.internal.provider.SetupLoggingActionExecuter.execute(SetupLoggingActionExecuter.java:47)
+    	at org.gradle.tooling.internal.provider.SetupLoggingActionExecuter.execute(SetupLoggingActionExecuter.java:31)
+    	at org.gradle.launcher.daemon.server.exec.ExecuteBuild.doBuild(ExecuteBuild.java:65)
+    	at org.gradle.launcher.daemon.server.exec.BuildCommandOnly.execute(BuildCommandOnly.java:37)
+    	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+    	at org.gradle.launcher.daemon.server.exec.WatchForDisconnection.execute(WatchForDisconnection.java:39)
+    	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+    	at org.gradle.launcher.daemon.server.exec.ResetDeprecationLogger.execute(ResetDeprecationLogger.java:29)
+    	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+    	at org.gradle.launcher.daemon.server.exec.RequestStopIfSingleUsedDaemon.execute(RequestStopIfSingleUsedDaemon.java:35)
+    	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+    	at org.gradle.launcher.daemon.server.exec.ForwardClientInput$2.create(ForwardClientInput.java:78)
+    	at org.gradle.launcher.daemon.server.exec.ForwardClientInput$2.create(ForwardClientInput.java:75)
+    	at org.gradle.util.Swapper.swap(Swapper.java:38)
+    	at org.gradle.launcher.daemon.server.exec.ForwardClientInput.execute(ForwardClientInput.java:75)
+    	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+    	at org.gradle.launcher.daemon.server.exec.LogAndCheckHealth.execute(LogAndCheckHealth.java:55)
+    	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+    	at org.gradle.launcher.daemon.server.exec.LogToClient.doBuild(LogToClient.java:63)
+    	at org.gradle.launcher.daemon.server.exec.BuildCommandOnly.execute(BuildCommandOnly.java:37)
+    	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+    	at org.gradle.launcher.daemon.server.exec.EstablishBuildEnvironment.doBuild(EstablishBuildEnvironment.java:84)
+    	at org.gradle.launcher.daemon.server.exec.BuildCommandOnly.execute(BuildCommandOnly.java:37)
+    	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+    	at org.gradle.launcher.daemon.server.exec.StartBuildOrRespondWithBusy$1.run(StartBuildOrRespondWithBusy.java:52)
+    	at org.gradle.launcher.daemon.server.DaemonStateCoordinator$1.run(DaemonStateCoordinator.java:297)
+    	... 3 more
+    Caused by: java.lang.IllegalStateException: Errors occurred during launch of browser for testing.
+    - ChromeHeadless
+    Please make sure that you have installed browsers.
+    Or change it via
+    browser {
+        testTask {
+            useKarma {
+                useFirefox()
+                useChrome()
+                useSafari()
+            }
+        }
+    }
+    	at org.jetbrains.kotlin.gradle.internal.testing.TCServiceMessagesTestExecutor$execute$1.invoke(TCServiceMessagesTestExecutor.kt:76)
+    	... 231 more
+
+
+    * Get more help at https://help.gradle.org
+
+    Deprecated Gradle features were used in this build, making it incompatible with Gradle 7.0.
+    Use '--warning-mode all' to show the individual deprecation warnings.
+    See https://docs.gradle.org/6.8.3/userguide/command_line_interface.html#sec:command_line_warnings
+
+    BUILD FAILED in 1m 13s
+    11 actionable tasks: 11 executed
+        at org.gradle.testkit.runner.internal.DefaultGradleRunner$2.execute(DefaultGradleRunner.java:255)
+        at org.gradle.testkit.runner.internal.DefaultGradleRunner$2.execute(DefaultGradleRunner.java:251)
+        at org.gradle.testkit.runner.internal.DefaultGradleRunner.run(DefaultGradleRunner.java:324)
+        at org.gradle.testkit.runner.internal.DefaultGradleRunner.build(DefaultGradleRunner.java:251)
+        at io.gitlab.arturbosch.detekt.testkit.DslGradleRunner.runTasks(DslGradleRunner.kt:130)
+        at io.gitlab.arturbosch.detekt.testkit.DslGradleRunner.runTasksAndCheckResult(DslGradleRunner.kt:127)
+        at io.gitlab.arturbosch.detekt.DetektMultiplatformTest$1$5$3.invoke(DetektMultiplatformTest.kt:217)
+        at io.gitlab.arturbosch.detekt.DetektMultiplatformTest$1$5$3.invoke(DetektMultiplatformTest.kt:11)
+
+DetektMultiplatformTest > configures baseline task SKIPPED
+
+DetektMultiplatformTest > configures detekt task without type resolution SKIPPED
+
+DetektMultiplatformTest > configures check tasks SKIPPED
+
+> Task :detekt-rules-style:compileTestJava NO-SOURCE
+> Task :detekt-rules-style:testClasses
+
+> Task :detekt-rules-style:test
+
+ExplicitCollectionElementAccessMethodSpec > reports map element access with get method STANDARD_ERROR
+    WARN: The registry key 'platform.random.idempotence.check.rate' accessed, but not loaded yet
+
+> Task :detekt-gradle-plugin:test
+
+GradleVersionTest > runs on version 5.4 of Gradle STANDARD_OUT
+    Downloading https://services.gradle.org/distributions/gradle-5.4-bin.zip
+    ...................................................................................
+
+GradleVersionTest > runs on version 6.7 of Gradle STANDARD_OUT
+    Downloading https://services.gradle.org/distributions/gradle-6.7-bin.zip
+    ..................................................................................................
+
+> Task :detekt-rules-style:check
+> Task :detekt-rules-style:build
+
+> Task :detekt-gradle-plugin:test
+
+169 tests completed, 1 failed, 3 skipped
+
+> Task :detekt-gradle-plugin:test FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':detekt-gradle-plugin:test'.
+> There were failing tests. See the report at: file:///tmp/tmp.kxICA7gILR/detekt-gradle-plugin/build/reports/tests/test/index.html
+
+* Try:
+Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output. Run with --scan to get full insights.
+
+* Get more help at https://help.gradle.org
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 7.0.
+Use '--warning-mode all' to show the individual deprecation warnings.
+See https://docs.gradle.org/6.8.3/userguide/command_line_interface.html#sec:command_line_warnings
+
+BUILD FAILED in 22m 57s
+272 actionable tasks: 272 executed
++ cleanup
++ rm -rf /tmp/tmp.kxICA7gILR
+|                                                                              |
++---+---------------------------------------------------------------+----------+
+| [31;1mx[0m | [31;1mdetekt@1 (exit code: 1)[0m                                       | 23.1 min |
++---+---------------------------------------------------------------+----------+
+| Issue tracker: https://github.com/misaelmt/bitrise-step-detekt/issues        |
+| Source: https://github.com/misaelmt/bitrise-step-detekt                      |
++---+---------------------------------------------------------------+----------+
+
+                                          ▼
+
++------------------------------------------------------------------------------+
+| (6) deploy-to-bitrise-io@1                                                   |
++------------------------------------------------------------------------------+
+| id: deploy-to-bitrise-io                                                     |
+| version: 1.13.1                                                              |
+| collection: https://github.com/bitrise-io/bitrise-steplib.git                |
+| toolkit: go                                                                  |
+| time: 2021-03-26T05:27:36Z                                                   |
++------------------------------------------------------------------------------+
+|                                                                              |
+[34;1mConfig:
+[0m- BuildURL: https://app.bitrise.io/build/02fab9ae40883fd7
+- APIToken: [REDACTED]
+- IsCompress: false
+- ZipName: 
+- DeployPath: /bitrise/deploy
+- NotifyUserGroups: everyone
+- NotifyEmailList: 
+- IsPublicPageEnabled: true
+- PublicInstallPageMapFormat: {{range $index, $element := .}}{{if $index}}|{{end}}{{$element.File}}=>{{$element.URL}}{{end}}
+- PermanentDownloadURLMapFormat: {{range $index, $element := .}}{{if $index}}|{{end}}{{$element.File}}=>{{$element.URL}}{{end}}
+- BuildSlug: 02fab9ae40883fd7
+- TestDeployDir: /tmp/test_results211295849
+- AppSlug: ee5cd9b3b7c66603
+- AddonAPIBaseURL: [REDACTED]
+- AddonAPIToken: [REDACTED]
+- GenerateUniversalApkIfNone: true
+- DebugMode: false
+- BundletoolVersion: 0.13.4
+
+
+[34;1mDeploying the content of the Deploy directory separately[0m
+
+[34;1mList of files to deploy[0m
+- /bitrise/deploy/app-lint-results-debug.html
+
+[34;1mDeploying files[0m
+[33;1mUniversal APK generation is going to be DEPRECATED with the next major release! In case you build a bundle and you would like to
+export a universal APK to distribute it for testing (by Public install page or Ship Add-on), please use the Export Universal APK Step instead!
+You may find further information about the Step here (https://devcenter.bitrise.io/deploy/android-deploy/exporting-a-universal-apk-from-an-aab/).[0m
+
+[32;1mUploading file: /bitrise/deploy/app-lint-results-debug.html[0m
+creating artifact
+  file size: 56100B
+uploading artifact
+finishing artifact
+
+[32;1mSuccess[0m
+You can find the Artifact on Bitrise, on the Build's page: https://app.bitrise.io/build/02fab9ae40883fd7
+A map of deployed files and their permanent download urls is now available in the Environment Variable: BITRISE_PERMANENT_DOWNLOAD_URL_MAP (value: app-lint-results-debug.html=>https://app.bitrise.io/artifact/152fdb62859f320e/download)
+
+
+[34;1mUpload test results[0m
+- uploading (0) test results
+[32;1mSuccess[0m
+|                                                                              |
++---+---------------------------------------------------------------+----------+
+| [32;1m✓[0m | [32;1mdeploy-to-bitrise-io@1[0m                                        | 7.64 sec |
++---+---------------------------------------------------------------+----------+
+
+                                          ▼
+
++------------------------------------------------------------------------------+
+| (7) cache-push@2                                                             |
++------------------------------------------------------------------------------+
+| id: cache-push                                                               |
+| version: 2.5.0                                                               |
+| collection: https://github.com/bitrise-io/bitrise-steplib.git                |
+| toolkit: go                                                                  |
+| time: 2021-03-26T05:27:43Z                                                   |
++------------------------------------------------------------------------------+
+|                                                                              |
+[33mWARN[0m[05:27:43] A previous step failed, and this step (cache-push@2) was not marked as IsAlwaysRun, skipped 
+|                                                                              |
++---+---------------------------------------------------------------+----------+
+| [34;1m-[0m | [34;1mcache-push@2[0m                                                  | 1.04 sec |
++---+---------------------------------------------------------------+----------+
+
+
++------------------------------------------------------------------------------+
+|                               bitrise summary                                |
++---+---------------------------------------------------------------+----------+
+|   | title                                                         | time (s) |
++---+---------------------------------------------------------------+----------+
+| [32;1m✓[0m | [32;1mactivate-ssh-key@4[0m                                            | 5.66 sec |
++---+---------------------------------------------------------------+----------+
+| [32;1m✓[0m | [32;1mgit-clone@4[0m                                                   | 4.58 sec |
++---+---------------------------------------------------------------+----------+
+| Update available: 4 (4.3.0) -> 5.0.0                                         |
+|                                                                              |
+| Release notes are available below                                            |
+| https://github.com/bitrise-steplib/steps-git-clone/releases                  |
++---+---------------------------------------------------------------+----------+
+| [33;1m![0m | [33;1mcache-pull@2 (exit code: 1)[0m                                   | 2.44 sec |
++---+---------------------------------------------------------------+----------+
+| Issue tracker: https://github.com/bitrise-steplib/steps-cache-pull/issues    |
+| Source: https://github.com/bitrise-steplib/steps-cache-pull.git              |
++---+---------------------------------------------------------------+----------+
+| [32;1m✓[0m | [32;1minstall-missing-android-tools@2[0m                               | 32.03 sec|
++---+---------------------------------------------------------------+----------+
+| [32;1m✓[0m | [32;1mandroid-lint@0[0m                                                | 50.64 sec|
++---+---------------------------------------------------------------+----------+
+| [31;1mx[0m | [31;1mdetekt@1 (exit code: 1)[0m                                       | 23.1 min |
++---+---------------------------------------------------------------+----------+
+| Issue tracker: https://github.com/misaelmt/bitrise-step-detekt/issues        |
+| Source: https://github.com/misaelmt/bitrise-step-detekt                      |
++---+---------------------------------------------------------------+----------+
+| [32;1m✓[0m | [32;1mdeploy-to-bitrise-io@1[0m                                        | 7.64 sec |
++---+---------------------------------------------------------------+----------+
+| [34;1m-[0m | [34;1mcache-push@2[0m                                                  | 1.04 sec |
++---+---------------------------------------------------------------+----------+
+| Total runtime: 24.8 min                                                      |
++------------------------------------------------------------------------------+
+
+[34;1m[0m
+[34;1mSubmitting anonymized usage information...[0m
+[34;1mFor more information visit:[0m
+[34;1mhttps://github.com/bitrise-io/bitrise-plugins-analytics/blob/master/README.md[0m
+exit status 1
