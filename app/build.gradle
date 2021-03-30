@@ -1,8 +1,10 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+
 }
 
+apply plugin: 'io.gitlab.arturbosch.detekt'
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
@@ -31,6 +33,24 @@ android {
         jvmTarget = '1.8'
     }
 }
+
+apply plugin: 'org.sonarqube'
+
+
+sonarqube
+        {
+            properties
+                    {
+                        property "sonar.projectName", "developerlibs"
+                        property "sonar.projectKey", "com.devlibs.android"
+                        property "sonar.language", "kotlin"
+                        property "sonar.sources", "src/main/java/"
+                        property "sonar.binaries", "build"
+                        property "sonar.sourceEncoding", "UTF-8"
+                        property "sonar.login", "admin"
+                        property "sonar.password", "admin"
+                    }
+        }
 
 dependencies {
 
